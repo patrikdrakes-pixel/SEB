@@ -2,9 +2,9 @@
   "name": "@sebgroup/green-angular-charts",
   "version": "4.0.0",
   "peerDependencies": {
-    "@angular/common": ">=19",
-    "@angular/core": ">=19",
-    "@angular/platform-browser": ">=19",
+    "@angular/common": ">=20",
+    "@angular/core": ">=20",
+    "@angular/platform-browser": ">=20",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
