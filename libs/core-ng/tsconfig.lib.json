@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "../../dist",
     "declaration": true,
-    "types": []
+    "types": [],
+    "moduleResolution": "bundler"
   },
   "include": ["**/*.ts", "**/*.css"],
   "exclude": [

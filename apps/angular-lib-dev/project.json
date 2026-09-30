@@ -76,7 +76,8 @@
       },
       "dependsOn": [
         "core:build"
-      ]
+      ],
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

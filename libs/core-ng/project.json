@@ -33,7 +33,8 @@
     "generate-wrappers": {
       "executor": "nx:run-commands",
       "dependsOn": [
-        "core:build-custom-elements-json"
+        "core:build-custom-elements-json",
+        "core:build"
       ],
       "options": {
         "command": "tsx --tsconfig libs/core-ng/tsconfig.json libs/core-ng/build-scripts/generate-wrappers.ts"
