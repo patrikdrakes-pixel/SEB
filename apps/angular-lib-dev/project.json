@@ -76,7 +76,8 @@
       },
       "dependsOn": [
         "core:build"
-      ]
+      ],
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -93,7 +94,8 @@
         "{workspaceRoot}/coverage/apps/angular-lib-dev"
       ],
       "options": {
-        "jestConfig": "apps/angular-lib-dev/jest.config.ts"
+        "jestConfig": "apps/angular-lib-dev/jest.config.ts",
+        "tsConfig": "apps/angular-lib-dev/tsconfig.spec.json"
       }
     }
   }
