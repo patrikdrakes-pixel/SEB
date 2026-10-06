@@ -1,6 +1,12 @@
 /* eslint-disable */
-const { pathsToModuleNameMapper } = require('ts-jest')
-const { compilerOptions } = require('../../tsconfig.base')
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { workspaceRoot } from '@nx/devkit'
+import { pathsToModuleNameMapper } from 'ts-jest'
+
+const { compilerOptions } = JSON.parse(
+  readFileSync(join(workspaceRoot, 'tsconfig.base.json'), 'utf-8'),
+)
 
 export default {
   displayName: 'react-lib-dev',

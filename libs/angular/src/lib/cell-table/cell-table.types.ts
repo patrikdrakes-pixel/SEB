@@ -17,6 +17,7 @@ export type TableHeaderListValueType =
   | 'custom-html'
   | 'sign'
   | 'streamSign'
+  | 'pct'
   | ''
 
 /** Table Header List Item Interface */

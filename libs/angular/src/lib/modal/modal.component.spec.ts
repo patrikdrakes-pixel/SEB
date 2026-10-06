@@ -1,3 +1,4 @@
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { fireEvent, render, waitFor } from '@testing-library/angular'
 import { createMock } from '@testing-library/angular/jest-utils'
 import * as bodyScrollLock from 'body-scroll-lock'
@@ -17,7 +18,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, dismissLabel: 'FakeDismiss' },
     })
     const modal = fixture.componentInstance
@@ -33,7 +34,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'default', isOpen: true },
     })
 
@@ -55,7 +56,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'default', isOpen: false },
     })
 
@@ -74,7 +75,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'default', isOpen: true },
     })
 
@@ -94,7 +95,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'default', isOpen: true },
     })
 
@@ -110,7 +111,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'slideout', isOpen: true },
     })
     const modalElement = await component.findByTestId('modal')
@@ -125,7 +126,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { modalType: 'takeover', isOpen: true },
     })
 
@@ -141,7 +142,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true },
     })
 
@@ -157,7 +158,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { hideHeader: true, isOpen: true },
     })
 
@@ -173,7 +174,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { confirmLabel: 'fakeConfirm', isOpen: true },
     })
 
@@ -189,7 +190,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: {
         isOpen: true,
         confirmLabel: 'FakeConfirm',
@@ -209,7 +210,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, header: 'FakeHeader' },
     })
 
@@ -225,7 +226,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, confirmLabel: 'FakeConfirm' },
     })
 
@@ -243,7 +244,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, dismissLabel: 'FakeDismiss' },
     })
 
@@ -261,7 +262,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, size: 'lg' },
     })
 
@@ -277,7 +278,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true },
     })
 
@@ -308,7 +309,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true },
     })
 
@@ -341,7 +342,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true },
     })
 
@@ -372,7 +373,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, confirmLabel: 'FakeConfirm' },
     })
 
@@ -399,7 +400,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, dismissLabel: 'FakeDismiss' },
     })
 
@@ -426,7 +427,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, size: 'md' },
     })
 
@@ -442,7 +443,7 @@ describe(NggModalComponent.name, () => {
         NggModalBodyComponent,
         NggModalFooterComponent,
       ],
-      providers: [],
+      providers: [provideNoopAnimations()],
       componentInputs: { isOpen: true, size: 'lg' },
     })
 

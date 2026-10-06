@@ -10,7 +10,7 @@ declare global {
 
 function getDocumentAdoptedStylesheet() {
   if (isServer) return []
-  return [...document.adoptedStyleSheets] || []
+  return [...(document.adoptedStyleSheets ?? [])]
 }
 
 /**
