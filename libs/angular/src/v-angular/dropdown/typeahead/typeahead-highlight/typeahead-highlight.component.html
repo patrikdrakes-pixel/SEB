@@ -1,6 +1,8 @@
-<ng-container *ngIf="!this.match">{{ textContent }}</ng-container>
+@if (!this.match) {
+  {{ textContent }}
+}
 <!-- Note that this is sensitive to line breaks producing extra spacing between the different parts -->
-<ng-container *ngIf="!!this.match">
+@if (!!this.match) {
   {{ prefix || '' }}<span class="match">{{ match }}</span
   >{{ suffix || '' }}
-</ng-container>
+}

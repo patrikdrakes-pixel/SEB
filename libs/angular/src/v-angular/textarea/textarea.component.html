@@ -10,25 +10,26 @@
   ></ng-template>
   <ng-template #basicLabelContentTpl>
     <!-- to trigger css:empty if no label was added -->
-    <ng-container *ngIf="label">
+    @if (label) {
       {{ label }}
-      <span
-        *ngIf="optional === true || (required !== true && optional !== false)"
-        class="gds-field-label--optional"
-      >
-        ({{ t('label.optional') }})
-      </span>
-    </ng-container>
+      @if (optional === true || (required !== true && optional !== false)) {
+        <span class="gds-field-label--optional">
+          ({{ t('label.optional') }})
+        </span>
+      }
+    }
   </ng-template>
 </label>
 
 <!-- DESCRIPTION -->
-<div class="form-info description hide-if-empty" *ngIf="description && descriptionIsVisible">
-  {{ description }}
-</div>
+@if (description && descriptionIsVisible) {
+  <div class="form-info description hide-if-empty">
+    {{ description }}
+  </div>
+}
 
 <!-- LOCKED INPUT -->
-<ng-container *ngIf="locked">
+@if (locked) {
   <ng-template
     *ngTemplateOutlet="
       lockedTpl || defaultLockedTpl;
@@ -43,16 +44,18 @@
       [attr.value]="state"
       [attr.role]="role"
     >
-      <span *ngIf="!state" class="unset-state">-</span>
-      <ng-container *ngIf="state">
+      @if (!state) {
+        <span class="unset-state">-</span>
+      }
+      @if (state) {
         {{ state }}
-      </ng-container>
+      }
     </div>
   </ng-template>
-</ng-container>
+}
 
 <!-- INPUT FIELD -->
-<ng-container *ngIf="!locked">
+@if (!locked) {
   <textarea
     #input
     [id]="id + '-textarea'"
@@ -76,42 +79,33 @@
     (focus)="onFocus($event)"
     (blur)="onBlur($event)"
   ></textarea>
-
   <!-- ERRORS -->
   <div
     class="gds-form-item__footer error-wrapper"
     *transloco="let t; read: scope"
   >
-    <span
-      class="form-info form-info--error"
-      [attr.for]="id + '-textarea'"
-      *ngIf="invalid && (error || ngControl?.invalid)"
-    >
-      <span class="error-icon">
-        <gds-icon-triangle-exclamation
-          width="16"
-          height="16"
-          solid="true"
-          *nggCoreElement
-        ></gds-icon-triangle-exclamation>
-      </span>
-
-      <span
-        *ngIf="error; else errorsRef"
-        [attr.data-thook]="thook + '-errorlabel'"
-        >{{ error }}</span
-      >
-      <ng-template #errorsRef>
-        <span
-          *ngIf="firstError as error"
-          [attr.data-thook]="thook + '-errorlabel'"
-        >
-          {{ t('error.field' + error?.code, error?.params) }}
+    @if (invalid && (error || ngControl?.invalid)) {
+      <span class="form-info form-info--error" [attr.for]="id + '-textarea'">
+        <span class="error-icon">
+          <gds-icon-triangle-exclamation
+            width="16"
+            height="16"
+            solid="true"
+            *nggCoreElement
+          ></gds-icon-triangle-exclamation>
         </span>
-      </ng-template>
-    </span>
-
-    <ng-container *ngIf="hasMaxLength">
+        @if (error) {
+          <span [attr.data-thook]="thook + '-errorlabel'">{{ error }}</span>
+        } @else {
+          @if (firstError; as error) {
+            <span [attr.data-thook]="thook + '-errorlabel'">
+              {{ t('error.field' + error?.code, error?.params) }}
+            </span>
+          }
+        }
+      </span>
+    }
+    @if (hasMaxLength) {
       <span
         *nggvCharacterCountdown="
           maxlength;
@@ -123,9 +117,8 @@
       >
         {{ charactersLeft }} {{ t('label.maxlength') }}
       </span>
-    </ng-container>
+    }
   </div>
-
   <!-- CHILDREN -->
   <ng-content></ng-content>
-</ng-container>
+}

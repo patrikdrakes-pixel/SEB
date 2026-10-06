@@ -10,21 +10,22 @@ export interface SegmentedControl {
  * @deprecated use <gds-segmented-control> from green-core instead.
  */
 @Component({
-    selector: 'ngg-segmented-control',
-    template: `
+  selector: 'ngg-segmented-control',
+  template: `
     <div class="group">
-      <a
-        *ngFor="let control of $controls | async"
-        [routerLink]="control.url"
-        routerLinkActive="active"
-        class="button"
-        >{{ control.text }}</a
-      >
+      @for (control of $controls | async; track control) {
+        <a
+          [routerLink]="control.url"
+          routerLinkActive="active"
+          class="button"
+          >{{ control.text }}</a
+        >
+      }
     </div>
   `,
-    styles: [],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NggSegmentedControlComponent {
   @Input() $controls: Observable<Array<SegmentedControl>> | undefined

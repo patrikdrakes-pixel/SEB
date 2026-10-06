@@ -32,13 +32,19 @@
   <table>
     <thead>
       <tr>
-        <th *ngFor="let header of headerList">{{ header.label }}</th>
+        @for (header of headerList; track header) {
+          <th>{{ header.label }}</th>
+        }
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows">
-        <td *ngFor="let cell of row | keyvalue">{{ cell }}</td>
-      </tr>
+      @for (row of rows; track row) {
+        <tr>
+          @for (cell of row | keyvalue; track cell) {
+            <td>{{ cell }}</td>
+          }
+        </tr>
+      }
     </tbody>
   </table>
 </div>

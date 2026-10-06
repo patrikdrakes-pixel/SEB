@@ -11,34 +11,33 @@ import {
 import { Chart, ChartArgs, ChartSettings, create } from '@sebgroup/green-charts'
 
 @Component({
-    selector: 'ngg-chart',
-    template: ` <div
+  selector: 'ngg-chart',
+  template: ` <div
     class="chart"
     [class.fit-height]="chart?.settings?.style?.fitHeightToParent"
   >
     <div #chartRef [class]="theme"></div>
-    <ng-container *ngIf="chart?.info?.legend as legend">
-      <div
-        class="legend-container"
-        [class]="legend.placement"
-        *ngIf="legend.placement !== 'none'"
-      >
-        <ul class="legend">
-          <li
-            *ngFor="let item of legend.items"
-            [style.--color]="item.color"
-            (mouseover)="chart.focus(item.title)"
-            (mouseup)="chart.focus(item.title)"
-            (mouseout)="chart.revert()"
-          >
-            <span>{{ item.title }}</span>
-          </li>
-        </ul>
-      </div>
-    </ng-container>
+    @if (chart?.info?.legend; as legend) {
+      @if (legend.placement !== 'none') {
+        <div class="legend-container" [class]="legend.placement">
+          <ul class="legend">
+            @for (item of legend.items; track item) {
+              <li
+                [style.--color]="item.color"
+                (mouseover)="chart.focus(item.title)"
+                (mouseup)="chart.focus(item.title)"
+                (mouseout)="chart.revert()"
+              >
+                <span>{{ item.title }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    }
   </div>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NggChartComponent implements AfterViewInit {
   @ViewChild('chartRef') _chartElementRef: ElementRef | undefined

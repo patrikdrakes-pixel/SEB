@@ -5,11 +5,9 @@
   <button type="button" class="btn-sm" (click)="reset()">Reset</button>
 </div>
 <div class="badge-container mt-3">
-  <span
-    *ngFor="let badge of badges"
-    ngg-badge
-    [badgeType]="badge.type"
-    [isCloseable]="edit"
-    >{{ badge.text }}</span
-  >
+  @for (badge of badges; track badge) {
+    <span ngg-badge [badgeType]="badge.type" [isCloseable]="edit">{{
+      badge.text
+    }}</span>
+  }
 </div>

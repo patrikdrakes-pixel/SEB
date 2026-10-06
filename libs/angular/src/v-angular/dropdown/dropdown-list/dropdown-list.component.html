@@ -11,113 +11,115 @@
       state ? id + '-option-' + (state?.id ?? state?.key) : undefined
     "
   >
-    <ng-container *ngFor="let item of options">
+    @for (item of options; track item) {
       <!-- OPTION -->
-      <ng-container *ngIf="!isGroup(item)">
+      @if (!isGroup(item)) {
         <ng-template
           *ngTemplateOutlet="listItemTemplate; context: { $implicit: item }"
         ></ng-template>
-      </ng-container>
-
+      }
       <!-- OPTION GROUP -->
-      <li
-        class="gds-dropdown__options__label group"
-        [attr.data-thook]="thook + '-option-group'"
-        *ngIf="isGroup(item)"
-      >
-        <!-- group label template (default or custom) -->
-        <ng-template
-          *ngTemplateOutlet="listGroupTemplate; context: { $implicit: item }"
-        ></ng-template>
-
-        <ul [attr.aria-disabled]="item.disabled" class="gds-reset">
-          <ng-container *ngFor="let option of castGroup(item).options">
-            <ng-template
-              *ngTemplateOutlet="
-                listItemTemplate;
-                context: { $implicit: option }
-              "
-            ></ng-template>
-          </ng-container>
-        </ul>
-      </li>
-    </ng-container>
+      @if (isGroup(item)) {
+        <li
+          class="gds-dropdown__options__label group"
+          [attr.data-thook]="thook + '-option-group'"
+        >
+          <!-- group label template (default or custom) -->
+          <ng-template
+            *ngTemplateOutlet="listGroupTemplate; context: { $implicit: item }"
+          ></ng-template>
+          <ul [attr.aria-disabled]="item.disabled" class="gds-reset">
+            @for (option of castGroup(item).options; track option) {
+              <ng-template
+                *ngTemplateOutlet="
+                  listItemTemplate;
+                  context: { $implicit: option }
+                "
+              ></ng-template>
+            }
+          </ul>
+        </li>
+      }
+    }
   </ul>
 
   <!-- TEMPLATE -->
   <ng-template #listItemTemplate let-option>
-    <li
-      #optionRefs
-      *ngIf="!optionContentTpl"
-      tabindex="-1"
-      [id]="id + '-option-' + (option.id ?? option.key)"
-      class="gds-dropdown__options__label option"
-      role="option"
-      #liElem
-      [attr.data-thook]="thook + '-option-' + option.key"
-      [attr.aria-disabled]="option.disabled"
-      [attr.aria-selected]="
-        option.key === selectedValue?.key && !!selectedValue?.key
-      "
-      [attr.aria-focus]="option.key === state?.key && !option.disabled"
-      [nggvTooltip]="isOverflow(liElem) ? t(option.label) : undefined"
-      (click)="updateState(option, $event)"
-    >
-      <ng-template
-        *ngTemplateOutlet="
-          basicOptionContentTpl;
-          context: { $implicit: option }
+    @if (!optionContentTpl) {
+      <li
+        #optionRefs
+        tabindex="-1"
+        [id]="id + '-option-' + (option.id ?? option.key)"
+        class="gds-dropdown__options__label option"
+        role="option"
+        #liElem
+        [attr.data-thook]="thook + '-option-' + option.key"
+        [attr.aria-disabled]="option.disabled"
+        [attr.aria-selected]="
+          option.key === selectedValue?.key && !!selectedValue?.key
         "
+        [attr.aria-focus]="option.key === state?.key && !option.disabled"
+        [nggvTooltip]="isOverflow(liElem) ? t(option.label) : undefined"
+        (click)="updateState(option, $event)"
       >
-      </ng-template>
-    </li>
+        <ng-template
+          *ngTemplateOutlet="
+            basicOptionContentTpl;
+            context: { $implicit: option }
+          "
+        >
+        </ng-template>
+      </li>
+    }
     <!-- Checking overflow on custom templates do not work skip adding nggvToolTip if custom template is provided -->
-    <li
-      #optionRefs
-      *ngIf="!!optionContentTpl"
-      tabindex="-1"
-      [id]="id + '-option-' + (option.id ?? option.key)"
-      class="gds-dropdown__options__label option"
-      role="option"
-      #liElem
-      [attr.data-thook]="thook + '-option-' + option.key"
-      [attr.aria-disabled]="option.disabled"
-      [attr.aria-selected]="
-        option.key === selectedValue?.key && !!selectedValue?.key
-      "
-      [attr.aria-focus]="option.key === state?.key && !option.disabled"
-      (click)="updateState(option, $event)"
-    >
-      <ng-template
-        *ngTemplateOutlet="optionContentTpl; context: { $implicit: option }"
+    @if (!!optionContentTpl) {
+      <li
+        #optionRefs
+        tabindex="-1"
+        [id]="id + '-option-' + (option.id ?? option.key)"
+        class="gds-dropdown__options__label option"
+        role="option"
+        #liElem
+        [attr.data-thook]="thook + '-option-' + option.key"
+        [attr.aria-disabled]="option.disabled"
+        [attr.aria-selected]="
+          option.key === selectedValue?.key && !!selectedValue?.key
+        "
+        [attr.aria-focus]="option.key === state?.key && !option.disabled"
+        (click)="updateState(option, $event)"
       >
-      </ng-template>
-    </li>
+        <ng-template
+          *ngTemplateOutlet="optionContentTpl; context: { $implicit: option }"
+        >
+        </ng-template>
+      </li>
+    }
   </ng-template>
 
   <ng-template #listGroupTemplate let-item>
-    <ng-container *ngIf="groupLabelTpl">
+    @if (groupLabelTpl) {
       <ng-template
         *ngTemplateOutlet="groupLabelTpl; context: { $implicit: item }"
       ></ng-template>
-    </ng-container>
-    <ng-container *ngIf="!groupLabelTpl">
+    }
+    @if (!groupLabelTpl) {
       <ng-template
         *ngTemplateOutlet="basicGroupLabelTpl; context: { $implicit: item }"
       ></ng-template>
-    </ng-container>
+    }
   </ng-template>
 
   <ng-template #basicOptionContentTpl let-option>
-    <nggv-typeahead-highlight
-      *ngIf="!!textToHighlight"
-      [textToHighlight]="textToHighlight"
-      [textContent]="t(option.label)"
-    >
-    </nggv-typeahead-highlight>
-    <ng-container *ngIf="!textToHighlight">
+    @if (!!textToHighlight) {
+      <nggv-typeahead-highlight
+        [textToHighlight]="textToHighlight"
+        [textContent]="t(option.label)"
+      >
+      </nggv-typeahead-highlight>
+    }
+    @if (!textToHighlight) {
       {{ t(option.label) }}
-    </ng-container>
+    }
   </ng-template>
 
   <ng-template #basicGroupLabelTpl let-item>

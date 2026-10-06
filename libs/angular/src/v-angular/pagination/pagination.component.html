@@ -1,19 +1,17 @@
 <div class="pagination-wrapper" [ngClass]="className" [attr.id]="id">
   <nav class="custom-pagination">
-    <ng-container *ngIf="useDotNav; else numNav">
+    @if (useDotNav) {
       <ul class="pagination dotnav">
-        <ng-container *ngFor="let num of dotnavList">
+        @for (num of dotnavList; track num) {
           <li class="page-item" (click)="handleOnChange(num)" [value]="num">
             <span
               class="page-dot-link"
               [ngClass]="{ active: value === num }"
             ></span>
           </li>
-        </ng-container>
+        }
       </ul>
-    </ng-container>
-
-    <ng-template #numNav>
+    } @else {
       <ul class="pagination">
         <ng-container>
           <li class="page-item" (click)="handleOnChange(value - 1)">
@@ -23,20 +21,18 @@
               [attr.disabled]="value === 1 ? 'disabled' : null"
             >
               <span class="nav-action">
-                <ng-container *ngIf="useTextNav; else angleLeftIcon">
+                @if (useTextNav) {
                   {{ previousText ? previousText : 'Previous' }}
-                </ng-container>
-                <ng-template #angleLeftIcon>
+                } @else {
                   <gds-icon-chevron-left
                     *nggCoreElement
                   ></gds-icon-chevron-left>
-                </ng-template>
+                }
               </span>
             </button>
           </li>
         </ng-container>
-
-        <ng-container *ngIf="useFirstAndLast">
+        @if (useFirstAndLast) {
           <li class="page-item" (click)="handleOnChange(1)">
             <button
               class="page-link"
@@ -46,15 +42,15 @@
               <span class="nav-num">{{ 1 }}</span>
             </button>
           </li>
-
-          <li class="page-item" *ngIf="showEllipsisStart">
-            <span class="page-link" [attr.title]="'...'">
-              <span class="nav-num">...</span>
-            </span>
-          </li>
-        </ng-container>
-
-        <ng-container *ngFor="let num of list">
+          @if (showEllipsisStart) {
+            <li class="page-item">
+              <span class="page-link" [attr.title]="'...'">
+                <span class="nav-num">...</span>
+              </span>
+            </li>
+          }
+        }
+        @for (num of list; track num) {
           <li
             class="page-item"
             [ngClass]="{ active: value === num }"
@@ -65,48 +61,43 @@
               <span class="nav-num">{{ num }}</span>
             </button>
           </li>
-        </ng-container>
-
-        <ng-container *ngIf="useFirstAndLast">
-          <li class="page-item" *ngIf="showEllipsisEnd">
-            <span class="page-link" [attr.title]="'...'">
-              <span class="nav-num">...</span>
-            </span>
-          </li>
-
-          <li
-            class="page-item"
-            (click)="handleOnChange(pagingSize)"
-            *ngIf="pagingSize > 1"
-          >
-            <button
-              class="page-link"
-              [ngClass]="{ active: value === pagingSize }"
-              [attr.title]="lastText"
-            >
-              <span class="nav-num">{{ pagingSize }}</span>
-            </button>
-          </li>
-        </ng-container>
-
+        }
+        @if (useFirstAndLast) {
+          @if (showEllipsisEnd) {
+            <li class="page-item">
+              <span class="page-link" [attr.title]="'...'">
+                <span class="nav-num">...</span>
+              </span>
+            </li>
+          }
+          @if (pagingSize > 1) {
+            <li class="page-item" (click)="handleOnChange(pagingSize)">
+              <button
+                class="page-link"
+                [ngClass]="{ active: value === pagingSize }"
+                [attr.title]="lastText"
+              >
+                <span class="nav-num">{{ pagingSize }}</span>
+              </button>
+            </li>
+          }
+        }
         <ng-container>
           <li class="page-item" (click)="handleOnChange(value + 1)">
             <button class="page-link" [attr.title]="nextText">
               <span class="nav-action">
-                <ng-container *ngIf="useTextNav; else angleRightIcon">
+                @if (useTextNav) {
                   {{ nextText ? nextText : 'Next' }}
-                </ng-container>
-                <ng-template #angleRightIcon>
+                } @else {
                   <gds-icon-chevron-right
                     *nggCoreElement
                   ></gds-icon-chevron-right>
-                </ng-template>
+                }
               </span>
             </button>
           </li>
         </ng-container>
-
-        <ng-container *ngIf="showGoToPage">
+        @if (showGoToPage) {
           <li>
             <div class="paging-input-wrapper">
               <div class="label-wrapper">
@@ -138,8 +129,8 @@
               </div>
             </div>
           </li>
-        </ng-container>
+        }
       </ul>
-    </ng-template>
+    }
   </nav>
 </div>

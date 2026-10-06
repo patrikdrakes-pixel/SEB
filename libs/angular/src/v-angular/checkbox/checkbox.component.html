@@ -1,22 +1,27 @@
 <!-- LOCKED INPUT -->
-<div *ngIf="locked && state">
-  <div
-    [id]="id + '-checkbox'"
-    class="nggv-field--locked"
-    [attr.name]="name"
-    [attr.value]="value"
-  >
-    <ng-container *ngIf="!labelContentTpl">
-      {{ label }}
-    </ng-container>
-    <ng-template
-      *ngTemplateOutlet="labelContentTpl ?? null; context: { $implicit: value }"
-    ></ng-template>
+@if (locked && state) {
+  <div>
+    <div
+      [id]="id + '-checkbox'"
+      class="nggv-field--locked"
+      [attr.name]="name"
+      [attr.value]="value"
+    >
+      @if (!labelContentTpl) {
+        {{ label }}
+      }
+      <ng-template
+        *ngTemplateOutlet="
+          labelContentTpl ?? null;
+          context: { $implicit: value }
+        "
+      ></ng-template>
+    </div>
   </div>
-</div>
+}
 
 <!-- INPUT WRAPPER -->
-<ng-container *ngIf="!locked">
+@if (!locked) {
   <div>
     <!-- CHECKBOX FIELD -->
     <label
@@ -47,54 +52,44 @@
       ></ng-template>
       <ng-template #basicLabelContentTpl>
         <!-- to trigger css:empty if no label was added -->
-        <ng-container *ngIf="label">
-          <span
-            *ngIf="
-              optional === true || (required !== true && optional !== false)
-            "
-            class="gds-field-label--optional"
-          >
-            ({{ t('label.optional') }})
-          </span>
+        @if (label) {
+          @if (optional === true || (required !== true && optional !== false)) {
+            <span class="gds-field-label--optional">
+              ({{ t('label.optional') }})
+            </span>
+          }
           <span>{{ label }}</span>
-        </ng-container>
+        }
       </ng-template>
       <i></i>
     </label>
   </div>
-
   <!-- ERRORS -->
   <ng-container *transloco="let t; read: scope">
-    <div
-      class="form-info form-info--error"
-      [attr.for]="id + '-checkbox'"
-      *ngIf="invalid && (error || ngControl?.invalid)"
-    >
-      <span class="error-icon">
-        <gds-icon-triangle-exclamation
-          width="16"
-          height="16"
-          [solid]="true"
-          *nggCoreElement
-        ></gds-icon-triangle-exclamation>
-      </span>
-      <span
-        *ngIf="error; else errorsRef"
-        [attr.data-thook]="thook + '-errorlabel'"
-      >
-        {{ error }}
-      </span>
-      <ng-template #errorsRef>
-        <span
-          *ngIf="firstError as error"
-          [attr.data-thook]="thook + '-errorlabel'"
-        >
-          {{ t('error.field' + error?.code, error?.params) }}
+    @if (invalid && (error || ngControl?.invalid)) {
+      <div class="form-info form-info--error" [attr.for]="id + '-checkbox'">
+        <span class="error-icon">
+          <gds-icon-triangle-exclamation
+            width="16"
+            height="16"
+            [solid]="true"
+            *nggCoreElement
+          ></gds-icon-triangle-exclamation>
         </span>
-      </ng-template>
-    </div>
+        @if (error) {
+          <span [attr.data-thook]="thook + '-errorlabel'">
+            {{ error }}
+          </span>
+        } @else {
+          @if (firstError; as error) {
+            <span [attr.data-thook]="thook + '-errorlabel'">
+              {{ t('error.field' + error?.code, error?.params) }}
+            </span>
+          }
+        }
+      </div>
+    }
   </ng-container>
-
   <!-- CHILDREN -->
   <ng-content></ng-content>
-</ng-container>
+}

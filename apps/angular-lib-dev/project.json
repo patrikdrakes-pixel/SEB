@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/angular-lib-dev",
         "index": "apps/angular-lib-dev/src/index.html",
@@ -21,9 +19,7 @@
           "apps/angular-lib-dev/src/favicon.ico",
           "apps/angular-lib-dev/src/assets"
         ],
-        "styles": [
-          "apps/angular-lib-dev/src/styles.scss"
-        ],
+        "styles": ["apps/angular-lib-dev/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -74,9 +70,8 @@
         "host": "0.0.0.0",
         "buildTarget": "angular-lib-dev:build:development"
       },
-      "dependsOn": [
-        "core:build"
-      ]
+      "dependsOn": ["core:build"],
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -89,11 +84,10 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/angular-lib-dev"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/angular-lib-dev"],
       "options": {
-        "jestConfig": "apps/angular-lib-dev/jest.config.ts"
+        "jestConfig": "apps/angular-lib-dev/jest.config.ts",
+        "tsConfig": "apps/angular-lib-dev/tsconfig.spec.json"
       }
     }
   }

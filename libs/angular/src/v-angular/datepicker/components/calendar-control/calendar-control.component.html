@@ -1,11 +1,12 @@
-<button
-  *ngIf="type === 'normal'"
-  data-thook="previous-month"
-  class="nggv-prev-button"
-  (click)="viewPreviousMonth()"
->
-  <gds-icon-chevron-left *nggCoreElement></gds-icon-chevron-left>
-</button>
+@if (type === 'normal') {
+  <button
+    data-thook="previous-month"
+    class="nggv-prev-button"
+    (click)="viewPreviousMonth()"
+  >
+    <gds-icon-chevron-left *nggCoreElement></gds-icon-chevron-left>
+  </button>
+}
 
 <ng-container [formGroup]="selectedCalendar">
   <select
@@ -13,14 +14,15 @@
     data-thook="select-month"
     formControlName="month"
   >
-    <option
-      *ngFor="let month of monthArray"
-      class="gds-field-dropdown__label"
-      tabindex="0"
-      [value]="month.getMonth()"
-    >
-      {{ month | date: 'MMMM' : undefined : locale }}
-    </option>
+    @for (month of monthArray; track month) {
+      <option
+        class="gds-field-dropdown__label"
+        tabindex="0"
+        [value]="month.getMonth()"
+      >
+        {{ month | date: 'MMMM' : undefined : locale }}
+      </option>
+    }
   </select>
 
   <select
@@ -28,22 +30,24 @@
     data-thook="select-year"
     formControlName="year"
   >
-    <option
-      *ngFor="let year of yearArray"
-      class="gds-field-dropdown__label"
-      tabindex="0"
-      [value]="year.getFullYear()"
-    >
-      {{ year | date: 'yyyy' : undefined : locale }}
-    </option>
+    @for (year of yearArray; track year) {
+      <option
+        class="gds-field-dropdown__label"
+        tabindex="0"
+        [value]="year.getFullYear()"
+      >
+        {{ year | date: 'yyyy' : undefined : locale }}
+      </option>
+    }
   </select>
 </ng-container>
 
-<button
-  *ngIf="type === 'normal'"
-  data-thook="next-month"
-  class="nggv-next-button"
-  (click)="viewNextMonth()"
->
-  <gds-icon-chevron-right *nggCoreElement></gds-icon-chevron-right>
-</button>
+@if (type === 'normal') {
+  <button
+    data-thook="next-month"
+    class="nggv-next-button"
+    (click)="viewNextMonth()"
+  >
+    <gds-icon-chevron-right *nggCoreElement></gds-icon-chevron-right>
+  </button>
+}

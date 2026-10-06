@@ -10,28 +10,26 @@
   ></ng-template>
   <ng-template #basicLabelContentTpl>
     <!-- to trigger css:empty if no label was added -->
-    <ng-container *ngIf="label">
+    @if (label) {
       {{ label }}
-      <span
-        *ngIf="optional === true || (required !== true && optional !== false)"
-        class="gds-field-label--optional"
-      >
-        ({{ t('label.optional') }})
-      </span>
-    </ng-container>
+      @if (optional === true || (required !== true && optional !== false)) {
+        <span class="gds-field-label--optional">
+          ({{ t('label.optional') }})
+        </span>
+      }
+    }
   </ng-template>
 </label>
 
 <!-- DESCRIPTION -->
-<div
-  class="form-info description hide-if-empty"
-  *ngIf="description && descriptionIsVisible"
->
-  {{ description }}
-</div>
+@if (description && descriptionIsVisible) {
+  <div class="form-info description hide-if-empty">
+    {{ description }}
+  </div>
+}
 
 <!-- LOCKED INPUT -->
-<ng-container *ngIf="locked">
+@if (locked) {
   <ng-template
     *ngTemplateOutlet="
       lockedTpl || defaultLockedTpl;
@@ -46,122 +44,113 @@
       [attr.value]="state"
       [attr.role]="role"
     >
-      <span *ngIf="!state" class="unset-state">-</span>
-      <ng-container *ngIf="state">
-        <ng-container *ngIf="!inputMask">
+      @if (!state) {
+        <span class="unset-state">-</span>
+      }
+      @if (state) {
+        @if (!inputMask) {
           {{ state }}
-        </ng-container>
-        <ng-container *ngIf="!!inputMask">
+        }
+        @if (!!inputMask) {
           {{ state | nggvInputMaskFormat: inputMask }}
-        </ng-container>
-      </ng-container>
+        }
+      }
     </div>
   </ng-template>
-</ng-container>
+}
 
 <!-- INPUT WRAPPER -->
-<ng-container *ngIf="!locked">
+@if (!locked) {
   <div class="gds-input-wrapper" [class.nggv-field--error]="invalid">
     <div class="input-group-prefix hide-if-empty">
       <ng-content select="[slot='prefix']"></ng-content>
     </div>
-
     <!-- INPUT FIELD -->
-    <div class="input-group" *ngIf="!inputMask">
-      <input
-        #input
-        [id]="id + '-input'"
-        class="gds-field"
-        [attr.type]="type"
-        [attr.name]="name"
-        [attr.required]="required || null"
-        [attr.email]="email"
-        [attr.aria-describedby]="id + '-message'"
-        [min]="min"
-        [max]="max"
-        [step]="step"
-        [attr.maxlength]="maxlength"
-        [attr.minlength]="minlength"
-        [pattern]="pattern"
-        title=""
-        [disabled]="disabled"
-        [autocomplete]="autocomplete"
-        [autofocus]="autofocus"
-        [readOnly]="readonly"
-        [attr.role]="role"
-        [attr.placeholder]="placeholder"
-        [attr.aria-label]="description"
-        [value]="state"
-        (input)="onInput($event)"
-        (focus)="onFocus($event)"
-        (blur)="onBlur($event)"
-      />
-    </div>
-
+    @if (!inputMask) {
+      <div class="input-group">
+        <input
+          #input
+          [id]="id + '-input'"
+          class="gds-field"
+          [attr.type]="type"
+          [attr.name]="name"
+          [attr.required]="required || null"
+          [attr.email]="email"
+          [attr.aria-describedby]="id + '-message'"
+          [min]="min"
+          [max]="max"
+          [step]="step"
+          [attr.maxlength]="maxlength"
+          [attr.minlength]="minlength"
+          [pattern]="pattern"
+          title=""
+          [disabled]="disabled"
+          [autocomplete]="autocomplete"
+          [autofocus]="autofocus"
+          [readOnly]="readonly"
+          [attr.role]="role"
+          [attr.placeholder]="placeholder"
+          [attr.aria-label]="description"
+          [value]="state"
+          (input)="onInput($event)"
+          (focus)="onFocus($event)"
+          (blur)="onBlur($event)"
+        />
+      </div>
+    }
     <!-- INPUT FIELD WITH MASK -->
-    <div
-      class="input-group"
-      *ngIf="!!inputMask && (hideInput$ | async) === false"
-    >
-      <input
-        #input
-        [id]="id + '-input'"
-        class="gds-field"
-        autocomplete="off"
-        [attr.name]="name"
-        [attr.required]="required || null"
-        [readOnly]="readonly"
-        [attr.role]="role"
-        [attr.placeholder]="placeholder"
-        [attr.aria-label]="description"
-        [attr.aria-describedby]="id + '-message'"
-        [nggvInputMask]="inputMask"
-        title=""
-        [formControl]="control"
-      />
-    </div>
-
+    @if (!!inputMask && (hideInput$ | async) === false) {
+      <div class="input-group">
+        <input
+          #input
+          [id]="id + '-input'"
+          class="gds-field"
+          autocomplete="off"
+          [attr.name]="name"
+          [attr.required]="required || null"
+          [readOnly]="readonly"
+          [attr.role]="role"
+          [attr.placeholder]="placeholder"
+          [attr.aria-label]="description"
+          [attr.aria-describedby]="id + '-message'"
+          [nggvInputMask]="inputMask"
+          title=""
+          [formControl]="control"
+        />
+      </div>
+    }
     <div class="input-group-suffix hide-if-empty">
       <ng-content select="[slot='suffix']"></ng-content>
       <ng-content></ng-content>
     </div>
   </div>
-
   <!-- ERRORS -->
   <div
     class="gds-form-item__footer error-wrapper"
     *transloco="let t; read: scope"
   >
-    <span
-      class="form-info form-info--error"
-      [attr.for]="id + '-input'"
-      *ngIf="invalid && (error || ngControl?.invalid)"
-    >
-      <span class="error-icon">
-        <gds-icon-triangle-exclamation
-          width="16"
-          height="16"
-          solid="true"
-          *nggCoreElement
-        ></gds-icon-triangle-exclamation>
-      </span>
-
-      <span
-        *ngIf="error; else errorsRef"
-        [attr.data-thook]="thook + '-errorlabel'"
-        >{{ error }}</span
-      >
-      <ng-template #errorsRef>
-        <span
-          *ngIf="firstError as error"
-          [attr.data-thook]="thook + '-errorlabel'"
-        >
-          {{ t('error.field' + error?.code, error?.params) }}
+    @if (invalid && (error || ngControl?.invalid)) {
+      <span class="form-info form-info--error" [attr.for]="id + '-input'">
+        <span class="error-icon">
+          <gds-icon-triangle-exclamation
+            width="16"
+            height="16"
+            solid="true"
+            *nggCoreElement
+          ></gds-icon-triangle-exclamation>
         </span>
-      </ng-template>
-    </span>
-
-    <ng-container *ngIf="!inputMask && hasMaxLength && showCharacterCountdown">
+        @if (error) {
+          <span [attr.data-thook]="thook + '-errorlabel'">{{ error }}</span>
+        } @else {
+          @if (firstError; as error) {
+            <span [attr.data-thook]="thook + '-errorlabel'">
+              {{ t('error.field' + error?.code, error?.params) }}
+            </span>
+          }
+        }
+      </span>
+    }
+    @if (!inputMask && hasMaxLength && showCharacterCountdown) {
       <span
         *nggvCharacterCountdown="
           maxlength;
@@ -173,6 +162,6 @@
       >
         {{ charactersLeft }} {{ t('label.maxlength') }}
       </span>
-    </ng-container>
+    }
   </div>
-</ng-container>
+}

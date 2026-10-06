@@ -8,13 +8,11 @@
   <h1 class="mx-4">Green Angular Dev</h1>
 </nav>
 <gds-flex border-width="0 0 4xs">
-  <gds-menu-button
-    *ngFor="let route of routes"
-    [routerLink]="route.path"
-    routerLinkActive
-  >
-    {{ route.data?.name }}
-  </gds-menu-button>
+  @for (route of routes; track route) {
+    <gds-menu-button [routerLink]="route.path" routerLinkActive>
+      {{ route.data?.name }}
+    </gds-menu-button>
+  }
 </gds-flex>
 <gds-div padding="m">
   <section aria-live="polite">

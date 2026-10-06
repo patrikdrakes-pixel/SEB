@@ -5,29 +5,33 @@
     [attr.data-thook]="thook + '-list'"
     (keydown)="onKeyDown($event)"
   >
-    <button
-      class="gds-tabs__tab"
-      [id]="'tab-' + (tab.id !== undefined ? tab.id : '')"
-      role="tab"
-      [attr.data-thook]="tab.thook || thook + '-tab'"
-      [tabindex]="tab.active ? 0 : -1"
-      [attr.aria-controls]="'panel-' + (tab.id !== undefined ? tab.id : '')"
-      [attr.aria-selected]="tab.active"
-      [class.-selected]="tab.active"
-      [disabled]="tab.disabled"
-      [innerHTML]="t(tab.tab)"
-      (click)="onSelect(tab.id)"
-      *ngFor="let tab of tabs"
-    ></button>
+    @for (tab of tabs; track tab) {
+      <button
+        class="gds-tabs__tab"
+        [id]="'tab-' + (tab.id !== undefined ? tab.id : '')"
+        role="tab"
+        [attr.data-thook]="tab.thook || thook + '-tab'"
+        [tabindex]="tab.active ? 0 : -1"
+        [attr.aria-controls]="'panel-' + (tab.id !== undefined ? tab.id : '')"
+        [attr.aria-selected]="tab.active"
+        [class.-selected]="tab.active"
+        [disabled]="tab.disabled"
+        [innerHTML]="t(tab.tab)"
+        (click)="onSelect(tab.id)"
+      ></button>
+    }
   </div>
-  <article
-    *ngIf="useRouting"
-    class="gds-tabs__panel -active"
-    [id]="'panel-' + (selectedTab ? selectedTab.id : '')"
-    [attr.data-thook]="thook + '-panel'"
-    [attr.aria-labelledby]="'tab-' + (selectedTab ? selectedTab.id : '')"
-  >
-    <router-outlet></router-outlet>
-  </article>
-  <ng-content *ngIf="!useRouting"></ng-content>
+  @if (useRouting) {
+    <article
+      class="gds-tabs__panel -active"
+      [id]="'panel-' + (selectedTab ? selectedTab.id : '')"
+      [attr.data-thook]="thook + '-panel'"
+      [attr.aria-labelledby]="'tab-' + (selectedTab ? selectedTab.id : '')"
+    >
+      <router-outlet></router-outlet>
+    </article>
+  }
+  @if (!useRouting) {
+    <ng-content></ng-content>
+  }
 </ng-container>

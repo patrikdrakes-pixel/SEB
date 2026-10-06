@@ -1,42 +1,40 @@
 <div class="alert-container" role="alert" [ngClass]="type">
-  <ng-container [ngSwitch]="type">
-    <ng-container
-      *ngSwitchCase="'success'"
-      [ngTemplateOutlet]="checkMark"
-    ></ng-container>
-    <ng-container
-      *ngSwitchCase="'information'"
-      [ngTemplateOutlet]="infoSquare"
-    ></ng-container>
-    <ng-container
-      *ngSwitchDefault
-      [ngTemplateOutlet]="exclamationSquare"
-    ></ng-container>
-  </ng-container>
+  @switch (type) {
+    @case ('success') {
+      <ng-container [ngTemplateOutlet]="checkMark"></ng-container>
+    }
+    @case ('information') {
+      <ng-container [ngTemplateOutlet]="infoSquare"></ng-container>
+    }
+    @default {
+      <ng-container [ngTemplateOutlet]="exclamationSquare"></ng-container>
+    }
+  }
   <div>
-    <h3 *ngIf="title">{{ title }}</h3>
-    <p *ngIf="body">
-      {{ body }}&nbsp;<a
-        *ngIf="linkText"
-        [href]="linkHref"
-        (click)="onLink($event)"
-        >{{ linkText }}</a
-      >
-    </p>
+    @if (title) {
+      <h3>{{ title }}</h3>
+    }
+    @if (body) {
+      <p>
+        {{ body }}&nbsp;
+        @if (linkText) {
+          <a [href]="linkHref" (click)="onLink($event)">{{ linkText }}</a>
+        }
+      </p>
+    }
   </div>
-  <button
-    *ngIf="closable && !actionText"
-    class="close"
-    type="button"
-    (click)="onClose($event)"
-  >
-    <i></i>
-  </button>
-  <footer *ngIf="actionText && !closable">
-    <button type="button" (click)="onAction($event)">
-      {{ actionText }}
+  @if (closable && !actionText) {
+    <button class="close" type="button" (click)="onClose($event)">
+      <i></i>
     </button>
-  </footer>
+  }
+  @if (actionText && !closable) {
+    <footer>
+      <button type="button" (click)="onAction($event)">
+        {{ actionText }}
+      </button>
+    </footer>
+  }
 </div>
 
 <ng-template #checkMark>

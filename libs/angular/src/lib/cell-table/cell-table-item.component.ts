@@ -4,33 +4,40 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser'
 import { TableHeaderListValueType } from './cell-table.types'
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[nggCellTableItem]',
-    template: `
-    <ng-container [ngSwitch]="valueType">
-      <span *ngSwitchCase="'string'">{{ row || '–' }}</span>
-      <span *ngSwitchCase="'number'">{{ (row | number) || '–' }}</span>
-      <span *ngSwitchCase="'datetime'">{{
-        (row | date: 'HH:mm:ss') || '–'
-      }}</span>
-      <span *ngSwitchCase="'date'">{{
-        (row | date: 'YYYY-MM-dd') || '–'
-      }}</span>
-      <span
-        *ngSwitchCase="'custom-html'"
-        [innerHtml]="transformHTML(row) || '–'"
-      ></span>
-      <span *ngSwitchCase="'sign'" [ngClass]="getSignColor(row)">{{
-        row || '–'
-      }}</span>
-      <span *ngSwitchCase="'pct'">{{ row || '–' }}</span>
-      <span *ngSwitchCase="'streamSign'" [nggSlidingUnderline]="row">{{
-        row || '–'
-      }}</span>
-      <span *ngSwitchDefault>–</span>
-    </ng-container>
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[nggCellTableItem]',
+  template: `
+    @switch (valueType) {
+      @case ('string') {
+        <span>{{ row || '–' }}</span>
+      }
+      @case ('number') {
+        <span>{{ (row | number) || '–' }}</span>
+      }
+      @case ('datetime') {
+        <span>{{ (row | date: 'HH:mm:ss') || '–' }}</span>
+      }
+      @case ('date') {
+        <span>{{ (row | date: 'YYYY-MM-dd') || '–' }}</span>
+      }
+      @case ('custom-html') {
+        <span [innerHtml]="transformHTML(row) || '–'"></span>
+      }
+      @case ('sign') {
+        <span [ngClass]="getSignColor(row)">{{ row || '–' }}</span>
+      }
+      @case ('pct') {
+        <span>{{ row || '–' }}</span>
+      }
+      @case ('streamSign') {
+        <span [nggSlidingUnderline]="row">{{ row || '–' }}</span>
+      }
+      @default {
+        <span>–</span>
+      }
+    }
   `,
-    standalone: false
+  standalone: false,
 })
 export class CellTableItemComponent {
   @Input() row: any

@@ -32,58 +32,60 @@
       <h2 class="h4">{{ title }}</h2>
     </div>
 
+    @if (isCompleted && !isActive) {
+      <div class="gds-in-page-wizard-step-card__header__edit">
+        <button
+          class="secondary small"
+          (click)="handleOnEditBtnClick($event)"
+          data-testid="in-page-wizard-step-card-edit-btn"
+        >
+          <ng-template *ngTemplateOutlet="editIcon"> </ng-template>
+          {{ editBtnText }}
+        </button>
+      </div>
+    }
+  </header>
+
+  @if (!!isActive || !!isCompleted) {
     <div
-      class="gds-in-page-wizard-step-card__header__edit"
-      *ngIf="isCompleted && !isActive"
+      class="gds-in-page-wizard-step-card__content"
+      data-testid="in-page-wizard-step-card-content"
+    >
+      <ng-content></ng-content>
+    </div>
+  }
+  @if (isCompleted && !isActive) {
+    <footer
+      class="gds-in-page-wizard-step-card__footer gds-in-page-wizard-step-card__footer--edit"
     >
       <button
-        class="secondary small"
+        class="secondary"
         (click)="handleOnEditBtnClick($event)"
-        data-testid="in-page-wizard-step-card-edit-btn"
+        data-testid="in-page-wizard-step-card-footer-edit-btn"
       >
         <ng-template *ngTemplateOutlet="editIcon"> </ng-template>
         {{ editBtnText }}
       </button>
-    </div>
-  </header>
+    </footer>
+  }
 
-  <div
-    class="gds-in-page-wizard-step-card__content"
-    *ngIf="!!isActive || !!isCompleted"
-    data-testid="in-page-wizard-step-card-content"
-  >
-    <ng-content></ng-content>
-  </div>
-  <footer
-    class="gds-in-page-wizard-step-card__footer gds-in-page-wizard-step-card__footer--edit"
-    *ngIf="isCompleted && !isActive"
-  >
-    <button
-      class="secondary"
-      (click)="handleOnEditBtnClick($event)"
-      data-testid="in-page-wizard-step-card-footer-edit-btn"
+  @if (isActive) {
+    <footer
+      class="gds-in-page-wizard-step-card__footer gds-in-page-wizard-step-card__footer--next"
     >
-      <ng-template *ngTemplateOutlet="editIcon"> </ng-template>
-      {{ editBtnText }}
-    </button>
-  </footer>
-
-  <footer
-    class="gds-in-page-wizard-step-card__footer gds-in-page-wizard-step-card__footer--next"
-    *ngIf="isActive"
-  >
-    <button
-      class="primary"
-      [disabled]="disableNext"
-      (click)="handleOnNextBtnClick($event)"
-      data-testid="in-page-wizard-step-card-next-btn"
-    >
-      {{ nextBtnText }}
-      <ng-container *ngIf="showNextBtnIcon">
-        <ng-template *ngTemplateOutlet="nextIcon"> </ng-template>
-      </ng-container>
-    </button>
-  </footer>
+      <button
+        class="primary"
+        [disabled]="disableNext"
+        (click)="handleOnNextBtnClick($event)"
+        data-testid="in-page-wizard-step-card-next-btn"
+      >
+        {{ nextBtnText }}
+        @if (showNextBtnIcon) {
+          <ng-template *ngTemplateOutlet="nextIcon"> </ng-template>
+        }
+      </button>
+    </footer>
+  }
 </section>
 
 <ng-template #editIcon>

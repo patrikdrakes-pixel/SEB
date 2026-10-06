@@ -10,7 +10,7 @@
     >
     </ng-container>
   </button>
-  <ng-container *ngFor="let menuItem of menuItems">
+  @for (menuItem of menuItems; track menuItem) {
     <gds-menu-item *nggCoreElement (click)="onItemClick(menuItem)">
       <ng-container
         [ngTemplateOutlet]="menuItemTemplate ?? defaultMenuItemTemplate"
@@ -18,7 +18,7 @@
       >
       </ng-container>
     </gds-menu-item>
-  </ng-container>
+  }
 </gds-context-menu>
 
 <ng-template #defaultMenuItemTemplate let-menuItem>

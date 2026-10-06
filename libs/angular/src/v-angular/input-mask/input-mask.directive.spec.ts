@@ -27,16 +27,17 @@ describe('[NggvInputMask] -> InputMaskDirective', () => {
   @Component({
     selector: 'nggv-lib-custom-input',
     template: `
-      <input
-        *ngIf="!isAsync"
-        class="nggv-lib-custom-input"
-        [formControl]="control"
-        [nggvInputMask]="inputMask"
-        [placeholder]="placeholder"
-      />
+      @if (!isAsync) {
+        <input
+          class="nggv-lib-custom-input"
+          [formControl]="control"
+          [nggvInputMask]="inputMask"
+          [placeholder]="placeholder"
+        />
+      }
     `,
-    standalone: false
-})
+    standalone: false,
+  })
   class CustomInputComponent implements OnInit {
     @Input() control!: FormControl
     @Input() inputMask!: InputmaskOptions<any>
@@ -72,8 +73,8 @@ describe('[NggvInputMask] -> InputMaskDirective', () => {
         placeholder="Date"
       ></nggv-lib-custom-input>
     `,
-    standalone: false
-})
+    standalone: false,
+  })
   class TestComponent {
     dateMask = createMask<Date>({
       alias: 'datetime',
@@ -252,8 +253,8 @@ describe('[NggvInputMask] -> InputMaskDirective -> Change detection', () => {
     template: `
       <input class="ip" [nggvInputMask]="ipAddressMask" [formControl]="ipFC" />
     `,
-    standalone: false
-})
+    standalone: false,
+  })
   class ChangeDetectionTestComponent {
     ipAddressMask = createMask({ alias: 'ip' })
     ipFC = new FormControl('')

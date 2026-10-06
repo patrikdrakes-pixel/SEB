@@ -9,9 +9,9 @@
 
 <!-- label row for week -->
 <div class="nggv-weekday-row">
-  <span *ngFor="let weekday of weekdayArray">{{
-    weekday | date: 'EEE' : undefined : locale
-  }}</span>
+  @for (weekday of weekdayArray; track weekday) {
+    <span>{{ weekday | date: 'EEE' : undefined : locale }}</span>
+  }
 </div>
 
 <!-- outlet for active calendar -->
@@ -28,9 +28,11 @@
   </ng-container>
 </div>
 
-<div *ngIf="type === 'extended'" class="gds-datepicker__controls">
-  <ng-content></ng-content>
-</div>
+@if (type === 'extended') {
+  <div class="gds-datepicker__controls">
+    <ng-content></ng-content>
+  </div>
+}
 
 <ng-template
   #calendarTemplate
