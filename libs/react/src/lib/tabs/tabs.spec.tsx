@@ -36,7 +36,7 @@ describe('Tabs only allow text as content', () => {
     const anchorTag: HTMLAnchorElement[] = screen.getAllByRole('tab')
     fireEvent.click(anchorTag[1])
     expect(screen.getByRole('tabpanel').textContent).toEqual('Page 2')
-    expect(onTabChange).toBeCalledWith(1)
+    expect(onTabChange).toHaveBeenCalledWith(1)
   })
 
   it('Should have aria-disabled', () => {
@@ -165,7 +165,7 @@ describe('Tabs allow components as content', () => {
     const anchorTag: HTMLAnchorElement[] = screen.getAllByRole('tab')
     fireEvent.click(anchorTag[1])
     expect(screen.getByRole('tabpanel').textContent).toEqual('Page 2 Content')
-    expect(onTabChange).toBeCalledWith(1)
+    expect(onTabChange).toHaveBeenCalledWith(1)
   })
 
   it('Should have aria-disabled', () => {

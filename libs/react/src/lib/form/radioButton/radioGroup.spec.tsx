@@ -56,16 +56,16 @@ describe('RadioButton Group Component', () => {
       .mockImplementation((value: string) => value)
     const { container } = render(<MockComponent onChangeRadio={mockFn} />)
     fireEvent.click(screen.getByText('Car 1'))
-    expect(mockFn).toBeCalled()
-    expect(mockFn).lastCalledWith('Car 1')
-    expect(mockFn).toBeCalledWith('Car 1')
+    expect(mockFn).toHaveBeenCalled()
+    expect(mockFn).toHaveBeenLastCalledWith('Car 1')
+    expect(mockFn).toHaveBeenCalledWith('Car 1')
     expect(
       container.querySelectorAll<HTMLInputElement>("input[type='radio']")[0]
         ?.checked,
     ).toEqual(true)
     fireEvent.click(screen.getByText('Car 2'))
-    expect(mockFn).lastCalledWith('Car 2')
-    expect(mockFn).toBeCalledWith('Car 2')
+    expect(mockFn).toHaveBeenLastCalledWith('Car 2')
+    expect(mockFn).toHaveBeenCalledWith('Car 2')
     expect(
       container.querySelectorAll<HTMLInputElement>("input[type='radio']")[1]
         ?.checked,

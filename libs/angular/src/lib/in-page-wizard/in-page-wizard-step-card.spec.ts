@@ -176,7 +176,7 @@ describe('InPageWizardStepCardComponent', () => {
 
       // Assert
       await waitFor(() => {
-        expect(nextSpy).toBeCalledTimes(1)
+        expect(nextSpy).toHaveBeenCalledTimes(1)
         expect(root.classList).toContain('active')
         expect(fixture.componentInstance.isCompleted).toBe(false)
         expect(fixture.componentInstance.isActive).toBe(true)
@@ -213,7 +213,7 @@ describe('InPageWizardStepCardComponent', () => {
 
     // Assert
     await waitFor(() => {
-      expect(nextSpy).toBeCalledTimes(1)
+      expect(nextSpy).toHaveBeenCalledTimes(1)
       expect(root.classList).not.toContain('active')
       expect(fixture.componentInstance.isCompleted).toBe(true)
       expect(fixture.componentInstance.isActive).toBe(false)
@@ -343,7 +343,7 @@ describe('Completed', () => {
     // Assert
     await waitFor(() => {
       expect(queryByTestId('in-page-wizard-step-card-edit-btn')).toBeNull()
-      expect(editSpy).toBeCalledTimes(1)
+      expect(editSpy).toHaveBeenCalledTimes(1)
     })
   })
 })
@@ -410,8 +410,8 @@ describe('Upcoming', () => {
 })
 
 @Component({
-    selector: 'ngg-fake-step-card',
-    template: `
+  selector: 'ngg-fake-step-card',
+  template: `
     <ngg-in-page-wizard-step-card
       [isActive]="isActive"
       [isCompleted]="isCompleted"
@@ -427,7 +427,7 @@ describe('Upcoming', () => {
       <h2 data-testid="fake-step-card-content">Content</h2>
     </ngg-in-page-wizard-step-card>
   `,
-    standalone: false
+  standalone: false,
 })
 class NggFakeInPageWizardStepCardComponent {
   @Input() public stepText = ''

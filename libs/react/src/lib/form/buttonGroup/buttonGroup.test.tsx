@@ -32,6 +32,6 @@ describe('ButtonGroup', () => {
     render(<MockButtonGroup />)
 
     fireEvent.click(screen.getAllByRole('button')[0])
-    expect(buttonClick).toBeCalled()
+    expect(buttonClick).toHaveBeenCalled()
   })
 })

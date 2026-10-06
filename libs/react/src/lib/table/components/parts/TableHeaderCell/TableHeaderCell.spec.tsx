@@ -43,8 +43,8 @@ describe('Component: Table header cell', () => {
     await user.click(
       document.body.querySelector('.sg-table-sort') as HTMLElement,
     )
-    expect(setTableStateFn).toBeCalled()
-    expect(sortFn).toBeCalled()
+    expect(setTableStateFn).toHaveBeenCalled()
+    expect(sortFn).toHaveBeenCalled()
   })
 
   it('Should change sorting direction', async () => {
@@ -69,14 +69,14 @@ describe('Component: Table header cell', () => {
     await user.click(
       document.body.querySelector('.sg-table-sort') as HTMLElement,
     )
-    expect(setTableStateFn).toBeCalledWith({
+    expect(setTableStateFn).toHaveBeenCalledWith({
       ...mockProviderValue.tableState,
       sortedColumn: {
         ...mockProviderValue.tableState.sortedColumn,
         sortDirection: SortDirection.DESC,
       },
     })
-    expect(sortFn).toBeCalled()
+    expect(sortFn).toHaveBeenCalled()
   })
 
   it('Should change sorting direction using prop', () => {
@@ -96,7 +96,7 @@ describe('Component: Table header cell', () => {
         </WrapperTableHeader>
       </TableContext.Provider>,
     )
-    expect(setTableStateFn).toBeCalledWith({
+    expect(setTableStateFn).toHaveBeenCalledWith({
       ...mockProviderValue.tableState,
       sortedColumn: { accessor: 'test', sortDirection: SortDirection.ASC },
     })

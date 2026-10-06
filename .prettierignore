@@ -9,3 +9,4 @@
 /.nx/workspace-data
 
 /apps/core-lib-benchmark
+.nx/self-healing

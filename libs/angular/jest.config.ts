@@ -1,14 +1,14 @@
 /* eslint-disable */
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
-import { workspaceRoot } from '@nx/devkit'
-import { pathsToModuleNameMapper } from 'ts-jest'
+const { readFileSync } = require('node:fs')
+const { join } = require('node:path')
+const { workspaceRoot } = require('@nx/devkit')
+const { pathsToModuleNameMapper } = require('ts-jest')
 
 const { compilerOptions } = JSON.parse(
   readFileSync(join(workspaceRoot, 'tsconfig.base.json'), 'utf-8'),
 )
 
-export default {
+module.exports = {
   displayName: 'angular',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

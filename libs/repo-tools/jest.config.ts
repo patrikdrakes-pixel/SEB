@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'repo-tools',
   preset: '../../jest.preset.js',
   transform: {

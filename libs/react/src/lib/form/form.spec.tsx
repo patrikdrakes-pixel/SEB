@@ -109,7 +109,7 @@ describe('Form component', () => {
       .mockImplementation((value: any) => value)
     render(<MockComponent mockOnSubmit={mockFn} />)
     await act(() => fireEvent.click(screen.getByText('submit')))
-    expect(mockFn).not.toBeCalled()
+    expect(mockFn).not.toHaveBeenCalled()
   })
 
   it('Should validate checkbox', async () => {
@@ -186,10 +186,10 @@ describe('Form component', () => {
     }
 
     render(<MockComponent />)
-    expect(mockFn).toBeCalledTimes(1)
+    expect(mockFn).toHaveBeenCalledTimes(1)
     expect(screen.getByText('text')).toBeVisible()
     await act(() => fireEvent.click(screen.getByText('click')))
     expect(screen.queryByText('text')).toBeNull()
-    expect(mockFn).toBeCalledTimes(4)
+    expect(mockFn).toHaveBeenCalledTimes(4)
   })
 })

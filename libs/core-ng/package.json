@@ -25,9 +25,9 @@
     "@sebgroup/green-core": "2.35.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=19",
-    "@angular/platform-browser": ">=19",
-    "@angular/animations": ">=19"
+    "@angular/core": ">=21",
+    "@angular/platform-browser": ">=21",
+    "@angular/animations": ">=21"
   },
   "peerDependenciesMeta": {}
 }

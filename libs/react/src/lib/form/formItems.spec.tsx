@@ -59,7 +59,7 @@ describe('FormItems Component', () => {
       })
     })
 
-    expect(mockFn).toBeCalledTimes(2)
+    expect(mockFn).toHaveBeenCalledTimes(2)
   })
 
   it('Should propagate onChange event to callback when provided', async () => {
@@ -71,10 +71,10 @@ describe('FormItems Component', () => {
         <TextInput label="Some field" />
       </FormItems>,
     )
-    expect(mockFn).not.toBeCalled()
+    expect(mockFn).not.toHaveBeenCalled()
     await act(async () => {
       await user.type(screen.getByRole('textbox'), inputText)
     })
-    expect(mockFn).toBeCalledTimes(inputText.length)
+    expect(mockFn).toHaveBeenCalledTimes(inputText.length)
   })
 })

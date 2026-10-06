@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 
 import Button from '../form/button/button'
 import AlertRibbon from './alert-ribbon'
@@ -58,7 +58,7 @@ describe('AlertRibbon', () => {
       </AlertRibbon>,
     )
 
-    expect(screen.getByRole('alert')).not.toContain(<button />)
+    expect(within(screen.getByRole('alert')).queryByRole('button')).toBeNull()
   })
 
   it('should show the passed aria-label for close button', () => {

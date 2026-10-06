@@ -1,70 +1,81 @@
-<ng-container *ngIf="isOpen" [ngSwitch]="modalType">
+@if (isOpen) {
   <div class="gds-dialog-wrapper" [@modalAnimation]>
-    <aside
-      data-testid="modal"
-      *ngSwitchCase="'slideout'"
-      role="dialog"
-      [attr.aria-modal]="trapFocus ? true : false"
-      [attr.aria-describedby]="'modal-header-' + guid"
-      [class.small]="size === 'sm'"
-      [class.medium]="size === 'md'"
-      [class.large]="size === 'lg'"
-      [class.entered]="isOpen"
-    >
-      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </aside>
-    <main
-      data-testid="modal"
-      *ngSwitchCase="'takeover'"
-      role="dialog"
-      [attr.aria-modal]="trapFocus ? true : false"
-      [attr.aria-describedby]="'modal-header-' + guid"
-      [class.entered]="isOpen"
-      [class.small]="size === 'sm'"
-      [class.medium]="size === 'md'"
-      [class.large]="size === 'lg'"
-    >
-      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </main>
-    <section
-      data-testid="modal"
-      *ngSwitchDefault
-      role="dialog"
-      [attr.aria-modal]="trapFocus ? true : false"
-      [attr.aria-describedby]="'modal-header-' + guid"
-      [class.small]="size === 'sm'"
-      [class.medium]="size === 'md'"
-      [class.large]="size === 'lg'"
-      [class.entered]="isOpen"
-    >
-      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </section>
+    @switch (modalType) {
+      @case ('slideout') {
+        <aside
+          data-testid="modal"
+          role="dialog"
+          [attr.aria-modal]="trapFocus ? true : false"
+          [attr.aria-describedby]="'modal-header-' + guid"
+          [class.small]="size === 'sm'"
+          [class.medium]="size === 'md'"
+          [class.large]="size === 'lg'"
+          [class.entered]="isOpen"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        </aside>
+      }
+      @case ('takeover') {
+        <main
+          data-testid="modal"
+          role="dialog"
+          [attr.aria-modal]="trapFocus ? true : false"
+          [attr.aria-describedby]="'modal-header-' + guid"
+          [class.entered]="isOpen"
+          [class.small]="size === 'sm'"
+          [class.medium]="size === 'md'"
+          [class.large]="size === 'lg'"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        </main>
+      }
+      @default {
+        <section
+          data-testid="modal"
+          role="dialog"
+          [attr.aria-modal]="trapFocus ? true : false"
+          [attr.aria-describedby]="'modal-header-' + guid"
+          [class.small]="size === 'sm'"
+          [class.medium]="size === 'md'"
+          [class.large]="size === 'lg'"
+          [class.entered]="isOpen"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        </section>
+      }
+    }
     <ng-template #contentTemplate>
-      <ng-container *ngIf="!hideHeader">
-        <header
-          *ngIf="!modalHeaderContent; else headerContentTemplate"
-          ngg-modal-header
-          [attr.id]="'modal-header-' + guid"
-          data-testid="modal-header"
-          [header]="header"
-          [closeText]="closeText"
-          (closed)="this.handleCloseClick($event)"
-        ></header>
-      </ng-container>
+      @if (!hideHeader) {
+        @if (!modalHeaderContent) {
+          <header
+            ngg-modal-header
+            [attr.id]="'modal-header-' + guid"
+            data-testid="modal-header"
+            [header]="header"
+            [closeText]="closeText"
+            (closed)="this.handleCloseClick($event)"
+          ></header>
+        } @else {
+          <ng-container *ngTemplateOutlet="headerContentTemplate"></ng-container>
+        }
+      }
       <div ngg-modal-body data-testid="modal-body" class="body">
         <ng-container *ngTemplateOutlet="bodyContentTemplate"></ng-container>
       </div>
-      <ng-container *ngIf="!hideFooter && (dismissLabel || confirmLabel)">
-        <footer
-          *ngIf="!modalFooterContent; else footerContentTemplate"
-          ngg-modal-footer
-          data-testid="modal-footer"
-          [dismissLabel]="dismissLabel"
-          [confirmLabel]="confirmLabel"
-          (dismiss)="this.handleDismiss($event)"
-          (confirm)="this.handleConfirm($event)"
-        ></footer>
-      </ng-container>
+      @if (!hideFooter && (dismissLabel || confirmLabel)) {
+        @if (!modalFooterContent) {
+          <footer
+            ngg-modal-footer
+            data-testid="modal-footer"
+            [dismissLabel]="dismissLabel"
+            [confirmLabel]="confirmLabel"
+            (dismiss)="this.handleDismiss($event)"
+            (confirm)="this.handleConfirm($event)"
+          ></footer>
+        } @else {
+          <ng-container *ngTemplateOutlet="footerContentTemplate"></ng-container>
+        }
+      }
     </ng-template>
     <ng-template #headerContentTemplate>
       <header data-testid="modal-header" [attr.id]="'modal-header-' + guid">
@@ -87,4 +98,4 @@
       [attr.aria-hidden]="true"
     ></div>
   </div>
-</ng-container>
+}

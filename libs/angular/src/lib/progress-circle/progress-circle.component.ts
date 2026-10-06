@@ -12,8 +12,8 @@ import {
     standalone: false
 })
 export class NggProgressCircleComponent {
-  @HostBinding('style.--start-value') private _startValue = '0deg'
-  @HostBinding('style.--end-value') private _endValue = '0deg'
+  @HostBinding('style.--start-value') protected _startValue = '0deg'
+  @HostBinding('style.--end-value') protected _endValue = '0deg'
 
   /** id of the progress circle */
   @Input() id?: string = `${randomId()}-progress-circle`
