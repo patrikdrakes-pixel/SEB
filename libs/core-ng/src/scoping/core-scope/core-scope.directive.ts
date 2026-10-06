@@ -1,7 +1,7 @@
-import { DOCUMENT } from '@angular/common'
 import {
   ChangeDetectorRef,
   Directive,
+  DOCUMENT,
   EmbeddedViewRef,
   inject,
   OnInit,

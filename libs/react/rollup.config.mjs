@@ -1,5 +1,5 @@
 import path from 'node:path'
-import * as glob from 'glob'
+import glob from 'glob'
 
 const inputs = Object.fromEntries(
   glob

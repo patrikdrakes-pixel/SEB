@@ -29,7 +29,8 @@
       "outputs": ["{workspaceRoot}/coverage/libs/angular"],
       "dependsOn": ["core:build"],
       "options": {
-        "jestConfig": "libs/angular/jest.config.ts"
+        "jestConfig": "libs/angular/jest.config.ts",
+        "tsConfig": "libs/angular/tsconfig.spec.json"
       }
     },
     "lint": {
