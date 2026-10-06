@@ -41,7 +41,7 @@
       "options": {
         "port": 4402,
         "configDir": "libs/angular/.storybook",
-        "buildTarget": "angular:build-storybook",
+        "browserTarget": "angular:build-storybook",
         "compodoc": false,
         "stylePreprocessorOptions": {
           "includePaths": ["libs/fonts/*"]
@@ -52,7 +52,7 @@
           "quiet": true
         }
       },
-      "dependsOn": ["core:build", "core:build-with-types"]
+      "dependsOn": ["core:build"]
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
@@ -71,7 +71,7 @@
           "quiet": true
         }
       },
-      "dependsOn": ["core:build", "core:build-with-types"]
+      "dependsOn": ["core:build"]
     },
     "copy-designlibrary-json": {
       "executor": "nx:run-commands",
