@@ -2,7 +2,7 @@
 const { pathsToModuleNameMapper } = require('ts-jest')
 const { compilerOptions } = require('../../tsconfig.base')
 
-export default {
+module.exports = {
   displayName: 'react-lib-dev',
   preset: '../../jest.preset.js',
   transform: {

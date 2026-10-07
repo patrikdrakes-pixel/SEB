@@ -35,8 +35,8 @@ describe('TextArea', () => {
     await act(async () => await user.click(inputElement))
     await act(async () => await user.keyboard('cat'))
 
-    expect(mockFn).toBeCalled()
-    expect(mockFn).lastReturnedWith('cat')
+    expect(mockFn).toHaveBeenCalled()
+    expect(mockFn).toHaveLastReturnedWith('cat')
   })
 
   it('should be controlled with value prop', async () => {

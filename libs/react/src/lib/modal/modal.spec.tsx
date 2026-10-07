@@ -92,7 +92,7 @@ describe('Modal', () => {
       </Modal>,
     )
     fireEvent.click(screen.getByText('Ok'))
-    expect(mockOnConfirm).toBeCalled()
+    expect(mockOnConfirm).toHaveBeenCalled()
   })
   it('Should fire onDismiss function', () => {
     const mockOnDismiss: jest.Mock = jest.fn()
@@ -107,7 +107,7 @@ describe('Modal', () => {
       </Modal>,
     )
     fireEvent.click(screen.getByText('Nope'))
-    expect(mockOnDismiss).toBeCalled()
+    expect(mockOnDismiss).toHaveBeenCalled()
   })
 
   it('Should close modal with backdrop grey area clicked', () => {

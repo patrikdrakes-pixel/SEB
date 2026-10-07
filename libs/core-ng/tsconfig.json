@@ -10,7 +10,10 @@
     "target": "es2020",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true
+    "allowJs": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "es2022"]
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

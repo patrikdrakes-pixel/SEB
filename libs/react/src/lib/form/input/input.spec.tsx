@@ -189,8 +189,8 @@ describe('Inputs', () => {
       await act(async () => await user.click(inputElement))
       await act(async () => await user.keyboard('cat'))
 
-      expect(mockFn).toBeCalled()
-      expect(mockFn).lastReturnedWith('cat')
+      expect(mockFn).toHaveBeenCalled()
+      expect(mockFn).toHaveLastReturnedWith('cat')
     })
 
     it('Should fire onChange', async () => {
@@ -206,7 +206,7 @@ describe('Inputs', () => {
       await act(async () => await user.click(inputElement))
       await act(async () => await user.keyboard('GDS'))
 
-      expect(mockFn).toBeCalledTimes(3)
+      expect(mockFn).toHaveBeenCalledTimes(3)
     })
 
     it('Should be controlled with value prop', async () => {
@@ -318,7 +318,7 @@ describe('Component: RadioButton', () => {
       />,
     )
     fireEvent.click(screen.getByText('Radio button'))
-    expect(onChange).toBeCalled()
+    expect(onChange).toHaveBeenCalled()
   })
 
   it('Should not fire onchange when disabled', () => {
@@ -332,7 +332,7 @@ describe('Component: RadioButton', () => {
       />,
     )
     fireEvent.click(screen.getByText('Radio button'))
-    expect(onChange).not.toBeCalled()
+    expect(onChange).not.toHaveBeenCalled()
   })
 
   it('Should render validator: invalid', () => {

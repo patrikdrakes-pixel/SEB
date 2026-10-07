@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'react-charts',
   preset: '../../jest.preset.js',
   globals: {},

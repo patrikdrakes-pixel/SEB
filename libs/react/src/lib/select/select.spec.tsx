@@ -56,6 +56,6 @@ describe('Select', () => {
     await userEvent.selectOptions(select, 'second-value')
     await userEvent.selectOptions(select, 'first-value')
 
-    expect(onChangeMock).toBeCalledTimes(2)
+    expect(onChangeMock).toHaveBeenCalledTimes(2)
   })
 })

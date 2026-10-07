@@ -53,7 +53,7 @@ describe('Slider', () => {
     const { container } = render(<Slider onChange={onChange} />)
     const input = container.querySelector('input') as HTMLInputElement
     fireEvent.change(input, { target: { value: 10 } })
-    expect(onChange).toBeCalled()
+    expect(onChange).toHaveBeenCalled()
   })
 
   it('should clamp to max value', () => {
@@ -82,7 +82,7 @@ describe('Slider', () => {
     act(() => {
       rerender(<Slider onClamp={onClamp} value={200} />)
     })
-    expect(onClamp).toBeCalled()
+    expect(onClamp).toHaveBeenCalled()
   })
 
   it('should emit min value when input field is set to empty', () => {
@@ -101,7 +101,7 @@ describe('Slider', () => {
       'input[type=text]',
     ) as HTMLInputElement
     fireEvent.blur(inputField, { target: { value: '' } })
-    expect(onChange).toBeCalledWith(10)
+    expect(onChange).toHaveBeenCalledWith(10)
   })
 
   it('should have same aria value when input field is set without following the step', () => {

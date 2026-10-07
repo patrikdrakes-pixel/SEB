@@ -2,7 +2,7 @@
 const { pathsToModuleNameMapper } = require('ts-jest')
 const { compilerOptions } = require('../../tsconfig.base')
 
-export default {
+module.exports = {
   displayName: 'angular',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

@@ -29,9 +29,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  nx: {
-    svgr: false,
-  },
+  nx: {},
 }
 
 const plugins = [withNx]

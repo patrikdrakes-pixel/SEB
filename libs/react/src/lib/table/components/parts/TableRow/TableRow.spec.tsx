@@ -45,7 +45,7 @@ describe('Component: Table row', () => {
       </TableContext.Provider>,
     )
     await user.click(screen.getAllByRole('button')[0])
-    expect(onRowExpand).toBeCalled()
+    expect(onRowExpand).toHaveBeenCalled()
   })
 
   it('Should be able to set row to be expanded by default', () => {
@@ -97,7 +97,7 @@ describe('Component: Table row', () => {
     await user.click(
       document.body.querySelector(`#tb_checkbox_${uniqueKey}`) as HTMLElement,
     )
-    expect(onRowSelect).toBeCalled()
+    expect(onRowSelect).toHaveBeenCalled()
   })
 
   it('Should be able to select all row', async () => {
@@ -120,7 +120,7 @@ describe('Component: Table row', () => {
     await user.click(
       document.body.querySelector('#tb_checkbox_all') as HTMLElement,
     )
-    expect(onRowSelect).toBeCalled()
+    expect(onRowSelect).toHaveBeenCalled()
   })
 
   it('Should display empty cell if row is a sub row', () => {
