@@ -7,7 +7,6 @@ import { GdsCheckboxFormControlBase } from './checkbox-form-control-base'
 @Component({
   selector: 'test-checkbox',
   template: '<input type="checkbox">',
-  standalone: true,
 })
 class TestCheckboxComponent extends GdsCheckboxFormControlBase {}
 

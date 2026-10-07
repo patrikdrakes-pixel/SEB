@@ -1,6 +1,9 @@
 {
   "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*", "storybook-static"],
+  "rules": {
+    "@angular-eslint/template/prefer-control-flow": "off"
+  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -26,13 +29,17 @@
           }
         ],
         "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/prefer-inject": "off",
+        "@angular-eslint/template/prefer-control-flow": "off",
         "@typescript-eslint/no-unused-expressions": "off"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/prefer-control-flow": "off"
+      }
     }
   ]
 }

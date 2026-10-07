@@ -7,9 +7,9 @@ import {
   forColorTokens,
   forRadiusTokens,
   forSpaceTokens,
-  GdsColorLevel,
   parseColorValue,
 } from '../../utils/helpers'
+import type { GdsColorLevel } from '../../utils/helpers'
 import {
   gdsCustomElement,
   html,

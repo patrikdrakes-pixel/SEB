@@ -8,8 +8,8 @@ import { styleExpressionProperty } from '../../utils/decorators/style-expression
 import {
   forColorTokens,
   forSpaceTokensAndCustomValues,
-  GdsColorLevel,
 } from '../../utils/helpers'
+import type { GdsColorLevel } from '../../utils/helpers'
 import {
   withLayoutChildProps,
   withMarginProps,

@@ -59,7 +59,6 @@ export class ValuePipe implements PipeTransform {
 @Pipe({
   name: 'valueImpure',
   pure: false,
-  standalone: true,
 })
 export class ValueImpurePipe implements PipeTransform {
   private readonly differs = inject(KeyValueDiffers)

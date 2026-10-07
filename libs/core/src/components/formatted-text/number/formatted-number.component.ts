@@ -3,7 +3,9 @@ import { property } from 'lit/decorators.js'
 
 import { gdsCustomElement } from '../../../utils/helpers/custom-element-scoping'
 import { GdsFormattedText } from '../formatted-text'
-import { NumberFormats, numberFormats } from '../formatters'
+import { numberFormats } from '../formatters'
+
+import type { NumberFormats } from '../formatters'
 
 /**
  * @element gds-formatted-number

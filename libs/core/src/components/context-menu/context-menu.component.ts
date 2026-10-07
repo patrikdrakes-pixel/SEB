@@ -1,8 +1,6 @@
 import { localized, msg } from '@lit/localize'
 import { property, query } from 'lit/decorators.js'
 import { when } from 'lit/directives/when.js'
-import { Placement } from '@floating-ui/dom'
-
 import { GdsElement } from '../../gds-element'
 import { GdsMenuItem } from '../../primitives/menu/menu-item.component'
 import { GdsMenu } from '../../primitives/menu/menu.component'
@@ -23,6 +21,8 @@ import {
   applyTriggerAriaAttributes,
   GdsPopover,
 } from '../popover/popover.component'
+
+import type { Placement } from '@floating-ui/dom'
 
 export { GdsMenuItem } from '../../primitives/menu/menu-item.component'
 export { GdsMenuHeading } from '../../primitives/menu/menu-heading.component'

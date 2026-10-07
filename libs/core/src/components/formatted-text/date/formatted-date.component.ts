@@ -3,7 +3,9 @@ import { property } from 'lit/decorators.js'
 
 import { gdsCustomElement } from '../../../utils/helpers/custom-element-scoping'
 import { GdsFormattedText } from '../formatted-text'
-import { DateTimeFormat, dateTimeFormats } from './date-time-formatter'
+import { dateTimeFormats } from './date-time-formatter'
+
+import type { DateTimeFormat } from './date-time-formatter'
 
 /**
  * @element gds-formatted-date

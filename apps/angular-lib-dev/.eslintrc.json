@@ -2,7 +2,8 @@
   "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "rules": {
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@angular-eslint/template/prefer-control-flow": "off"
   },
   "overrides": [
     {
@@ -28,13 +29,17 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/prefer-standalone": "off"
+        "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/prefer-inject": "off",
+        "@angular-eslint/template/prefer-control-flow": "off"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/prefer-control-flow": "off"
+      }
     }
   ]
 }

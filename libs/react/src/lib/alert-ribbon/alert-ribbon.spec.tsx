@@ -58,7 +58,7 @@ describe('AlertRibbon', () => {
       </AlertRibbon>,
     )
 
-    expect(screen.getByRole('alert')).not.toContain(<button />)
+    expect(screen.getByRole('alert').querySelector('button')).toBeNull()
   })
 
   it('should show the passed aria-label for close button', () => {

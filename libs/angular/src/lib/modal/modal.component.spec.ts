@@ -1,13 +1,24 @@
-import { fireEvent, render, waitFor } from '@testing-library/angular'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { fireEvent, render as testingRender, waitFor } from '@testing-library/angular'
 import { createMock } from '@testing-library/angular/jest-utils'
-import * as bodyScrollLock from 'body-scroll-lock'
+import type { RenderComponentOptions } from '@testing-library/angular'
 
+import * as bodyScrollLock from 'body-scroll-lock'
 import {
   NggModalBodyComponent,
   NggModalComponent,
   NggModalFooterComponent,
   NggModalHeaderComponent,
 } from '.'
+
+const render = (
+  component: typeof NggModalComponent,
+  options: RenderComponentOptions<NggModalComponent>,
+) =>
+  testingRender(component, {
+    ...options,
+    imports: [NoopAnimationsModule, ...(options.imports ?? [])],
+  })
 
 describe(NggModalComponent.name, () => {
   it('should create', async () => {

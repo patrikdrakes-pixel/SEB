@@ -1,8 +1,14 @@
 /* eslint-disable */
-const { pathsToModuleNameMapper } = require('ts-jest')
-const { compilerOptions } = require('../../tsconfig.base')
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { workspaceRoot } from '@nx/devkit'
+import { pathsToModuleNameMapper } from 'ts-jest'
 
-module.exports = {
+const { compilerOptions } = JSON.parse(
+  readFileSync(join(workspaceRoot, 'tsconfig.base.json'), 'utf-8'),
+)
+
+export default {
   displayName: 'react',
   preset: '../../jest.preset.js',
   transform: {
@@ -19,7 +25,11 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/react',
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/../..',
-  }),
+  moduleNameMapper: {
+    '^@sebgroup/green-core/react$':
+      '<rootDir>/../../dist/libs/core/src/generated/react/index.js',
+    ...pathsToModuleNameMapper(compilerOptions.paths, {
+      prefix: '<rootDir>/../..',
+    }),
+  },
 }

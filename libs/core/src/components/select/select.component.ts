@@ -366,4 +366,6 @@ class Select<ValueT = string> extends GdsFormControlElement<ValueT | ValueT[]> {
 })
 export class GdsSelect extends withLayoutChildProps(
   withSizeXProps(withMarginProps(Select)),
-) {}
+) {
+  static declare define: () => void
+}

@@ -1,10 +1,10 @@
-import { LitElement, nothing } from 'lit'
+import { LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { when } from 'lit/directives/when.js'
 
-import { html } from '../../../../libs/core/src/scoping'
+import { html } from '@sebgroup/green-core/scoping.js'
 
-import '../../../../libs/core/src/components/index'
+import '@sebgroup/green-core/components/index.js'
 
 @customElement('plain-form-controls')
 export class PlainFormControls extends LitElement {
@@ -56,7 +56,8 @@ export class PlainFormControls extends LitElement {
             ><input
               type="checkbox"
               .checked=${this.plain}
-              @change=${(e) => (this.plain = e.target.checked)} /><span
+              @change=${(e: Event) =>
+                (this.plain = (e.currentTarget as HTMLInputElement).checked)} /><span
               >Plain</span
             ><i></i
           ></label>
@@ -64,7 +65,8 @@ export class PlainFormControls extends LitElement {
             ><input
               type="checkbox"
               .checked=${this.disabled}
-              @change=${(e) => (this.disabled = e.target.checked)} /><span
+              @change=${(e: Event) =>
+                (this.disabled = (e.currentTarget as HTMLInputElement).checked)} /><span
               >Disabled</span
             ><i></i
           ></label>
@@ -72,7 +74,8 @@ export class PlainFormControls extends LitElement {
             ><input
               type="checkbox"
               .checked=${this.invalid}
-              @change=${(e) => (this.invalid = e.target.checked)} /><span
+              @change=${(e: Event) =>
+                (this.invalid = (e.currentTarget as HTMLInputElement).checked)} /><span
               >Invalid</span
             ><i></i
           ></label>
@@ -80,8 +83,9 @@ export class PlainFormControls extends LitElement {
             ><input
               type="checkbox"
               .checked=${this.showSupportingText}
-              @change=${(e) =>
-                (this.showSupportingText = e.target.checked)} /><span
+              @change=${(e: Event) =>
+                (this.showSupportingText =
+                  (e.currentTarget as HTMLInputElement).checked)} /><span
               >Show supporting text</span
             ><i></i
           ></label>
@@ -89,8 +93,9 @@ export class PlainFormControls extends LitElement {
             ><input
               type="checkbox"
               .checked=${this.showExtendedSupportingText}
-              @change=${(e) =>
-                (this.showExtendedSupportingText = e.target.checked)} /><span
+              @change=${(e: Event) =>
+                (this.showExtendedSupportingText =
+                  (e.currentTarget as HTMLInputElement).checked)} /><span
               >Show extended supporting text</span
             ><i></i
           ></label>

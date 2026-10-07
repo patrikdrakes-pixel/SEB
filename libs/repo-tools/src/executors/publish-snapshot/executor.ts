@@ -7,6 +7,9 @@ import type { ExecutorContext } from '@nx/devkit'
 interface PackageJsonPartial {
   name: string
   version: string
+  publishConfig?: {
+    directory?: string
+  }
 }
 
 interface ExecutorOptions {

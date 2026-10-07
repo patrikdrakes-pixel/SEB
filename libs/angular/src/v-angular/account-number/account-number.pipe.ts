@@ -57,7 +57,6 @@ export const formatAccountNumber = (
  */
 @Pipe({
   name: 'accountNumber',
-  standalone: true,
 })
 export class AccountNumberPipe implements PipeTransform {
   transform = (value: string, schema?: AccountNumberSchema): string =>

@@ -3,8 +3,10 @@ import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 
 import { argTablePropsFor } from '../../../../.storybook/argTableProps'
-import { DateTimeFormat, dateTimeFormats } from './date-time-formatter'
+import { dateTimeFormats } from './date-time-formatter'
 import { GdsFormattedDate } from './formatted-date.component'
+
+import type { DateTimeFormat } from './date-time-formatter'
 
 import './formatted-date'
 import '../../flex'

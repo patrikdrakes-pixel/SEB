@@ -1,6 +1,6 @@
 
 @use '@sebgroup/chlorophyll/scss/components/use-green-scope' with (
-  $font-path: '@sebgroup/fonts/fonts'
+  $font-path: '../../../libs/fonts/fonts'
 );
 
 .use-green {

@@ -2,7 +2,6 @@ import { Pipe, PipeTransform } from '@angular/core'
 
 @Pipe({
   name: 'trThook',
-  standalone: true,
 })
 export class TrThookPipe implements PipeTransform {
   transform<V>(

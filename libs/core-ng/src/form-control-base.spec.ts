@@ -7,7 +7,6 @@ import { GdsFormControlBase } from './form-control-base'
 @Component({
   selector: 'test-form-control',
   template: '<input>',
-  standalone: true,
 })
 class TestFormControlComponent extends GdsFormControlBase<string> {}
 

@@ -48,7 +48,7 @@ type FormData = {
   dessert: [string | undefined, errorState]
   date: [Date | undefined, errorState]
   description: [string, errorState]
-  radio: [string | undefined, errorState]
+  radio: [string | boolean | undefined, errorState]
   checkbox: [string[], errorState]
 }
 

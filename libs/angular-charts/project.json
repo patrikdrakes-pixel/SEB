@@ -39,7 +39,7 @@
       "options": {
         "port": 4405,
         "configDir": "libs/angular-charts/.storybook",
-        "buildTarget": "angular-charts:build-storybook",
+        "browserTarget": "angular-charts:build-storybook",
         "compodoc": false
       },
       "configurations": {

@@ -81,7 +81,7 @@ export class TableBenchmark extends LitElement {
     }
   ]
 
-  private dataProvider = async (request: Request): Promise<Response<Pokemon>> => {
+  private dataProvider = async (_request: Request): Promise<Response<Pokemon>> => {
     const start = performance.now()
     const result: Response<Pokemon> = { rows: this.DATA, total: this.ROW_COUNT }
     const end = performance.now()

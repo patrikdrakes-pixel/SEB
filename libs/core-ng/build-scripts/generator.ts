@@ -99,7 +99,8 @@ export class AngularGenerator {
     // Add router imports for link components
     if (isLinkComponent) {
       imports.push(
-        `import { RouterLink, RouterLinkActive } from '@angular/router';`,
+        `import { LocationStrategy } from '@angular/common';`,
+        `import { Router, RouterLink, RouterLinkActive } from '@angular/router';`,
       )
     }
 
@@ -274,6 +275,8 @@ export class AngularGenerator {
     // So we only inject renderer for non-form-control link components
     const routerLinkInjections = data.isLinkComponent
       ? `${data.isFormControl ? '' : '\n  private renderer = inject(Renderer2);'}
+  private router = inject(Router, { optional: true });
+  private locationStrategy = inject(LocationStrategy, { optional: true });
   private routerLink = inject(RouterLink, { optional: true, self: true });
   private routerLinkActive = inject(RouterLinkActive, { optional: true, self: true });`
       : ''
@@ -288,15 +291,18 @@ export class AngularGenerator {
   private updateHref(): void {
     if (!this.routerLink) return;
 
-    // Trick RouterLink into thinking we are an anchor element
-    (this.routerLink as any).isAnchorElement = true;
-    (this.routerLink as any).updateHref();
+    const urlTree = this.routerLink.urlTree;
+    const href =
+      urlTree && this.router
+        ? (this.locationStrategy?.prepareExternalUrl(
+            this.router.serializeUrl(urlTree),
+          ) ?? '')
+        : '';
 
-    // Set the href attribute on our element
     this.renderer.setAttribute(
       this.elementRef.nativeElement,
       'href',
-      this.routerLink.href || '',
+      href,
     );
   }${
     data.isMenuButton
@@ -381,7 +387,6 @@ ${formControlBody}`
 ${data.proxyInputsDecorator}
 @Component({
   selector: '${data.tagName}',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: \`<ng-content></ng-content>\`${providers}
 })

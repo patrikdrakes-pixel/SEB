@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common'
 import {
   Directive,
   ElementRef,
@@ -7,7 +8,7 @@ import {
   Self,
   SimpleChanges,
 } from '@angular/core'
-import { RouterLink, RouterLinkActive } from '@angular/router'
+import { Router, RouterLink, RouterLinkActive } from '@angular/router'
 
 /**
  * @deprecated No longer needed when using components from `@sebgroup/green-core-ng`
@@ -22,6 +23,8 @@ export class NggCoreRouterLinkDirective implements OnChanges {
     private elementRef: ElementRef,
     @Self() @Optional() private routerLink?: RouterLink,
     @Self() @Optional() private routerLinkActive?: RouterLinkActive,
+    @Optional() private router?: Router,
+    @Optional() private locationStrategy?: LocationStrategy,
   ) {
     this.routerLinkActive?.isActiveChange.subscribe(() => this.setActive())
   }
@@ -47,15 +50,18 @@ export class NggCoreRouterLinkDirective implements OnChanges {
   }
 
   private updateHref(): void {
-    // First we need to be a bit sneaky and trick `RouterLink` into thinking we are an anchor element
-    ;(this.routerLink as any).isAnchorElement = true
-    ;(this.routerLink as any).updateHref()
+    const urlTree = this.routerLink?.urlTree
+    const href =
+      urlTree && this.router
+        ? (this.locationStrategy?.prepareExternalUrl(
+            this.router.serializeUrl(urlTree),
+          ) ?? '')
+        : ''
 
-    // Then we can set the href attribute
     this.renderer.setAttribute(
       this.elementRef.nativeElement,
       'href',
-      this.routerLink?.href || '',
+      href,
     )
   }
 }
