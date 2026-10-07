@@ -2,12 +2,10 @@ import { html } from 'lit/static-html.js'
 
 import { tokens } from '../../tokens.style'
 import { styleExpressionProperty } from '../../utils/decorators/style-expression-property'
-import { parseColorValue } from '../../utils/helpers'
+import { GdsColorLevel, parseColorValue } from '../../utils/helpers'
 import { gdsCustomElement } from '../../utils/helpers/custom-element-scoping'
 import { GdsFlex } from '../flex/flex.component'
 import MaskStyles from './mask.styles'
-
-import type { GdsColorLevel } from '../../utils/helpers'
 
 /**
  * @element gds-mask

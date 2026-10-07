@@ -25,11 +25,7 @@ export default {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/react',
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  moduleNameMapper: {
-    '^@sebgroup/green-core/react$':
-      '<rootDir>/../../dist/libs/core/src/generated/react/index.js',
-    ...pathsToModuleNameMapper(compilerOptions.paths, {
-      prefix: '<rootDir>/../..',
-    }),
-  },
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/../..',
+  }),
 }

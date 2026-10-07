@@ -4,7 +4,9 @@ import { classMap } from 'lit/directives/class-map.js'
 import {
   autoUpdate,
   computePosition,
+  Middleware,
   offset,
+  Placement,
   shift,
 } from '@floating-ui/dom'
 
@@ -16,7 +18,6 @@ import { IconCrossSmall } from '../icon/icons/cross-small.component'
 import PopoverStyles from './popover.styles'
 
 import type { GdsBackdrop } from './backdrop'
-import type { Middleware, Placement } from '@floating-ui/dom'
 
 export type UIStateChangeReason = 'show' | 'close' | 'cancel'
 

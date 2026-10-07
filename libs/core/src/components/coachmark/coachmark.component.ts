@@ -1,5 +1,5 @@
 import { property, state } from 'lit/decorators.js'
-import { createRef, ref } from 'lit/directives/ref.js'
+import { createRef, ref, Ref } from 'lit/directives/ref.js'
 import { when } from 'lit/directives/when.js'
 import {
   arrow,
@@ -9,15 +9,13 @@ import {
   flip,
   hide,
   offset,
+  Placement,
   shift,
 } from '@floating-ui/dom'
 
 import { GdsElement } from '../../gds-element'
 import { gdsCustomElement, html } from '../../scoping'
 import CoachmarkStyles from './coachmark.styles'
-
-import type { Ref } from 'lit/directives/ref.js'
-import type { Placement } from '@floating-ui/dom'
 
 /**
  * @element gds-coachmark

@@ -140,7 +140,6 @@ export interface Icon extends CellProps<Omit<GdsIcon, keyof GdsElement>> {
 
 export interface Button extends CellProps<Omit<GdsButton, keyof GdsElement>> {
   type: 'button'
-  slot?: string
   template?: string | ((row: any) => string)
   onClick: (row: any) => void
 }
