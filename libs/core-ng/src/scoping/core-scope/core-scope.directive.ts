@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common'
+
 import {
   ChangeDetectorRef,
   Directive,
@@ -8,6 +8,7 @@ import {
   Renderer2,
   TemplateRef,
   ViewContainerRef,
+  DOCUMENT
 } from '@angular/core'
 
 import { SCOPE_RESOLVER } from '../scope-resolver'

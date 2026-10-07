@@ -22,7 +22,6 @@
         "parallel": false
       }
     },
-
     "build": {
       "executor": "nx:run-commands",
       "options": {
