@@ -14,8 +14,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router'
  * @deprecated No longer needed when using components from `@sebgroup/green-core-ng`
  */
 @Directive({
-    selector: '[nggCoreRouterLink]',
-    standalone: false
+  selector: '[nggCoreRouterLink]',
+  standalone: false,
 })
 export class NggCoreRouterLinkDirective implements OnChanges {
   constructor(
@@ -58,10 +58,6 @@ export class NggCoreRouterLinkDirective implements OnChanges {
           ) ?? '')
         : ''
 
-    this.renderer.setAttribute(
-      this.elementRef.nativeElement,
-      'href',
-      href,
-    )
+    this.renderer.setAttribute(this.elementRef.nativeElement, 'href', href)
   }
 }

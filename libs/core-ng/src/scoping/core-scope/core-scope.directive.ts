@@ -1,4 +1,4 @@
-
+import { DOCUMENT } from '@angular/common'
 import {
   ChangeDetectorRef,
   Directive,
@@ -8,14 +8,13 @@ import {
   Renderer2,
   TemplateRef,
   ViewContainerRef,
-  DOCUMENT
 } from '@angular/core'
 
 import { SCOPE_RESOLVER } from '../scope-resolver'
 
 @Directive({
-    selector: '[gdsCoreScope]',
-    standalone: false
+  selector: '[gdsCoreScope]',
+  standalone: false,
 })
 export class GdsCoreScopeDirective implements OnInit {
   private viewRef: EmbeddedViewRef<any> | null = null
