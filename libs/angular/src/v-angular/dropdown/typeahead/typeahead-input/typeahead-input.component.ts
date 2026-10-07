@@ -10,6 +10,7 @@ import {
   Optional,
   Renderer2,
   Self,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -23,6 +24,7 @@ import { NggvDropdownComponent } from '../../dropdown.component'
     selector: 'nggv-typeahead-input',
     templateUrl: './typeahead-input.component.html',
     styleUrls: ['./typeahead-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvTypeaheadInputComponent

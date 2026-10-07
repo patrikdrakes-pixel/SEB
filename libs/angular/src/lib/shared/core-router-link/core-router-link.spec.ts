@@ -1,5 +1,5 @@
 import { provideLocationMocks } from '@angular/common/testing'
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { provideRouter, RouterModule } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
@@ -27,6 +27,7 @@ import { NggCoreRouterLinkDirective } from './core-router-link.directive'
       >Test Anchor</a
     >
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestComponent {}

@@ -10,6 +10,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/angular"],
       "inputs": ["core"],
+      "defaultConfiguration": "production",
       "options": {
         "project": "libs/angular/ng-package.json",
         "tsConfig": "libs/angular/tsconfig.lib.prod.json"
@@ -21,8 +22,7 @@
         "development": {
           "tsConfig": "libs/angular/tsconfig.lib.json"
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -38,6 +38,7 @@
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
+      "dependsOn": ["core:build"],
       "options": {
         "port": 4402,
         "configDir": "libs/angular/.storybook",
@@ -51,12 +52,12 @@
         "ci": {
           "quiet": true
         }
-      },
-      "dependsOn": ["core:build"]
+      }
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
+      "dependsOn": ["core:build"],
       "options": {
         "outputDir": "dist/storybook/angular",
         "configDir": "libs/angular/.storybook",
@@ -70,8 +71,7 @@
         "ci": {
           "quiet": true
         }
-      },
-      "dependsOn": ["core:build"]
+      }
     },
     "copy-designlibrary-json": {
       "executor": "nx:run-commands",

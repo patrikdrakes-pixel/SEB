@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core'
 import {
   ComponentFixture,
   fakeAsync,
@@ -27,6 +27,7 @@ import { NggvTypeaheadInputComponent } from './typeahead-input.component'
     ],
     // eslint-disable-next-line @angular-eslint/no-outputs-metadata-property
     outputs: ['expandedChange'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DropdownStubComponent {

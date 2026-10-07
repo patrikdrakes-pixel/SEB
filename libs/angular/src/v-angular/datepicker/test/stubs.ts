@@ -1,4 +1,4 @@
-import { Component, Directive, Pipe, PipeTransform } from '@angular/core'
+import { Component, Directive, Pipe, PipeTransform, ChangeDetectionStrategy } from '@angular/core'
 
 /* eslint-disable @angular-eslint/directive-selector */
 /* eslint-disable @angular-eslint/no-inputs-metadata-property */
@@ -10,6 +10,7 @@ import { Component, Directive, Pipe, PipeTransform } from '@angular/core'
     selector: 'fa-icon',
     inputs: ['icon'],
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FontAwesomeMockComponent {}
@@ -29,6 +30,7 @@ export class FontAwesomeMockComponent {}
         'closingTime',
     ],
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DatepickerMockComponent {}
@@ -37,6 +39,7 @@ export class DatepickerMockComponent {}
     selector: 'nggv-calendar-control',
     inputs: ['activeCalendar', 'locale', 'type'],
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DateCalendarControlMockComponent {}
@@ -58,6 +61,7 @@ export class DateCalendarControlMockComponent {}
         'type',
     ],
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DateCalendarMockComponent {}

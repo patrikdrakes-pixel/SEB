@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, NgZone } from '@angular/core'
+import { Component, ElementRef, Renderer2, NgZone, ChangeDetectionStrategy } from '@angular/core'
 import { FormControl, NgControl, ReactiveFormsModule } from '@angular/forms'
 import { TestBed, ComponentFixture } from '@angular/core/testing'
 import { GdsFormControlBase } from './form-control-base'
@@ -6,6 +6,7 @@ import { GdsFormControlBase } from './form-control-base'
 // Mock component that extends GdsFormControlBase
 @Component({
   selector: 'test-form-control',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<input>',
 })
 class TestFormControlComponent extends GdsFormControlBase<string> {}

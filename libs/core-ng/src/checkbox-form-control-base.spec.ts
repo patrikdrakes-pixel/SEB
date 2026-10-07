@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core'
+import { Component, Renderer2, ChangeDetectionStrategy } from '@angular/core'
 import { FormControl, NgControl, ReactiveFormsModule } from '@angular/forms'
 import { TestBed, ComponentFixture } from '@angular/core/testing'
 import { GdsCheckboxFormControlBase } from './checkbox-form-control-base'
@@ -6,6 +6,7 @@ import { GdsCheckboxFormControlBase } from './checkbox-form-control-base'
 // Mock checkbox component that extends GdsCheckboxFormControlBase
 @Component({
   selector: 'test-checkbox',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<input type="checkbox">',
 })
 class TestCheckboxComponent extends GdsCheckboxFormControlBase {}

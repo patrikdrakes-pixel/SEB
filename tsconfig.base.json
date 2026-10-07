@@ -39,7 +39,12 @@
       "@sebgroup/green-tokens": ["dist/libs/tokens"],
       "@sebgroup/green-tokens/*": ["dist/libs/tokens/*"],
       "@sebgroup/repo-tools": ["dist/repo-tools/src/index.ts"]
-    }
+    },
+    "strict": false,
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": false,
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "tmp"]
 }

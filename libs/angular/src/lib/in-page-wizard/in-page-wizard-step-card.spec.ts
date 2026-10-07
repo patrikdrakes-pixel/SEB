@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 import { fireEvent, render, waitFor } from '@testing-library/angular'
 
 import { NggInPageWizardStepCardComponent } from './in-page-wizard-step-card.component'
@@ -427,6 +427,7 @@ describe('Upcoming', () => {
       <h2 data-testid="fake-step-card-content">Content</h2>
     </ngg-in-page-wizard-step-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class NggFakeInPageWizardStepCardComponent {

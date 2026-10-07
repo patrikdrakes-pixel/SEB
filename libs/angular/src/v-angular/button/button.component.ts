@@ -11,6 +11,7 @@ import {
   Output,
   Self,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -39,6 +40,7 @@ export enum ButtonStyle {
     selector: 'nggv-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvButtonComponent

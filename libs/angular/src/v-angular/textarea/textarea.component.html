@@ -106,7 +106,7 @@
           *ngIf="firstError as error"
           [attr.data-thook]="thook + '-errorlabel'"
         >
-          {{ t('error.field' + error?.code, error?.params) }}
+          {{ t('error.field' + $safeNavigationMigration(error?.code), $safeNavigationMigration(error?.params)) }}
         </span>
       </ng-template>
     </span>

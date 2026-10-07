@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core'
+import { Component, HostBinding, Input, ChangeDetectionStrategy } from '@angular/core'
 
 import {
   calculateDegrees,
@@ -9,6 +9,7 @@ import {
 @Component({
     selector: 'ngg-progress-circle',
     templateUrl: './progress-circle.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggProgressCircleComponent {

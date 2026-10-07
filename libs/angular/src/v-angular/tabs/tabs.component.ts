@@ -12,6 +12,7 @@ import {
   Output,
   QueryList,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
@@ -24,6 +25,7 @@ import { EventTabChange, Tab } from './tabs.models'
     selector: 'nggv-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabsComponent

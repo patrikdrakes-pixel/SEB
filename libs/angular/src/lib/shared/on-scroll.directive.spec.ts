@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { fireEvent } from '@testing-library/angular'
@@ -8,6 +8,7 @@ import { NggOnScrollDirective, ON_SCROLL_TOKEN } from './on-scroll.directive'
 
 @Component({
     template: '<div nggOnScroll><</div>',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestComponent {}

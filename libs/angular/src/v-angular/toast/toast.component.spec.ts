@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core'
+import { Component, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
@@ -13,6 +13,7 @@ import { MessageType, ToastMessage } from './toast.models'
     <ng-template #div1>Something here</ng-template>
     <nggv-toast />
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class WrapperComponent {

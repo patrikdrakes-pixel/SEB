@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core'
 
 import { randomId } from '@sebgroup/extract'
 
@@ -6,6 +6,7 @@ import { randomId } from '@sebgroup/extract'
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'div[ngg-accordion-list-item]',
     templateUrl: './accordion-list-item.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggAccordionListItemComponent {

@@ -11,6 +11,7 @@ import {
   Optional,
   Output,
   Self,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl, UntypedFormControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -29,6 +30,7 @@ import { NggvBaseControlValueAccessorComponent } from '@sebgroup/green-angular/s
     selector: 'nggv-input',
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvInputComponent

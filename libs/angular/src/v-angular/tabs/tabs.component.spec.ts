@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 
@@ -16,6 +16,7 @@ import { TabsComponent } from './tabs.component'
     <article tab="Tab title 3" disabled><!-- Content --></article>
     <article tab="<strong>Tab title 4</strong>"><!-- Content --></article>
   </nggv-tabs>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix

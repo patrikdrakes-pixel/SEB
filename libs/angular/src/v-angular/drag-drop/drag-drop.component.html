@@ -78,7 +78,7 @@
 
         <!-- COMPONENT STATE DONE -->
         <ng-template [ngSwitchCase]="'done'">
-          {{ t('dragDrop.label.fileUploaded', { filename: lastFile?.fileName })
+          {{ t('dragDrop.label.fileUploaded', { filename: $safeNavigationMigration(lastFile?.fileName) })
           }}<gds-icon-checkmark *nggCoreElement></gds-icon-checkmark>
         </ng-template>
       </label>
@@ -231,7 +231,7 @@
     [title]="t('dragDrop.text.fileCancelModalTitle')"
     [content]="
       t('dragDrop.text.fileCancelModalContent', {
-        name: markedForDeletion?.fileName,
+        name: $safeNavigationMigration(markedForDeletion?.fileName),
       })
     "
     [payload]="markedForDeletion"
@@ -259,8 +259,8 @@
         {{
           t('dragDrop.text.fileStateUploading', {
             uploaded:
-              (file.raw?.size * (file.progress / 100)) / 1024 | number: '0.0-0',
-            size: file.raw?.size / 1024 | number: '0.0-0',
+              ($safeNavigationMigration(file.raw?.size) * (file.progress / 100)) / 1024 | number: '0.0-0',
+            size: $safeNavigationMigration(file.raw?.size) / 1024 | number: '0.0-0',
             progress: file.progress,
             unit: 'kB',
           })
@@ -294,8 +294,8 @@
         text ||
           t('dragDrop.text.fileStateUploading', {
             uploaded:
-              (file.raw?.size * (file.progress / 100)) / 1024 | number: '0.0-0',
-            size: file.raw?.size / 1024 | number: '0.0-0',
+              ($safeNavigationMigration(file.raw?.size) * (file.progress / 100)) / 1024 | number: '0.0-0',
+            size: $safeNavigationMigration(file.raw?.size) / 1024 | number: '0.0-0',
             progress: file.progress,
             unit: 'kB',
           })

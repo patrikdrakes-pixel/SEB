@@ -9,6 +9,7 @@
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/angular-charts"],
+      "defaultConfiguration": "production",
       "options": {
         "project": "libs/angular-charts/ng-package.json",
         "tsConfig": "libs/angular-charts/tsconfig.lib.prod.json"
@@ -20,8 +21,7 @@
         "development": {
           "tsConfig": "libs/angular-charts/tsconfig.lib.json"
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",

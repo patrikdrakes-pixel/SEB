@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core'
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { TableDirective, TableTemplateDirective } from './table.directive'
@@ -14,6 +14,7 @@ const tableColumnTargetVerifyProperty = 'td'
       [tableColumnTarget]="tableColumnTarget"
     ></ng-template>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestHostComponent {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
 import { SCOPE_RESOLVER } from '../scope-resolver'
@@ -6,6 +6,7 @@ import { NggCoreElementDirective } from './core-element.directive'
 
 @Component({
     template: '<div *nggCoreElement></div>',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestComponent {}

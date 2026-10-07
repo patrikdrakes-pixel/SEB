@@ -10,6 +10,7 @@ import {
   OnDestroy,
   Output,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { fromEvent, Subscription } from 'rxjs'
 import { filter, takeWhile } from 'rxjs/operators'
@@ -20,6 +21,7 @@ import { KeyboardKey } from './keyboard-key.enum'
     selector: 'nggv-fold-out',
     templateUrl: './fold-out.component.html',
     styleUrls: ['./fold-out.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvFoldOutComponent implements OnDestroy, AfterViewInit {

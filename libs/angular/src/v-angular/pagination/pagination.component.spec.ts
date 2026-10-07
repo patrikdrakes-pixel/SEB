@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { FormsModule } from '@angular/forms'
 import { By } from '@angular/platform-browser'
@@ -26,6 +26,7 @@ import { PaginationComponent } from './pagination.component'
       [previousText]="previousText"
     ></nggv-pagination>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class PaginationTestComponent {

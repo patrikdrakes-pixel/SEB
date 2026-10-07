@@ -14,6 +14,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
 import { filter, fromEvent, Subject, Subscription, takeUntil } from 'rxjs'
@@ -29,6 +30,7 @@ import {
   selector: 'nggv-dropdown-list',
   templateUrl: './dropdown-list.component.html',
   styleUrls: ['./dropdown-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class NggvDropdownListComponent implements OnInit, OnChanges {

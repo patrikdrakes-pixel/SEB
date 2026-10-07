@@ -1,6 +1,6 @@
 import '@sebgroup/green-core/components/icon/icons/circle-info.js'
 
-import { Component, HostBinding, Input } from '@angular/core'
+import { Component, HostBinding, Input, ChangeDetectionStrategy } from '@angular/core'
 
 /**
  * A button that will present an explanation to a problem/question.
@@ -10,6 +10,7 @@ import { Component, HostBinding, Input } from '@angular/core'
     selector: 'nggv-info-circle',
     templateUrl: './info-circle.component.html',
     styleUrls: ['./info-circle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvInfoCircleComponent {

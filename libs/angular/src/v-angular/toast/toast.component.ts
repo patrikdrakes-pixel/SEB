@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations'
-import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { Subscription } from 'rxjs'
 
 import { ToastMessageService } from './toast-message.service'
@@ -22,6 +22,7 @@ import '@sebgroup/green-core/components/icon/icons/cross-small.js'
             ]),
         ]),
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ToastComponent implements OnInit, OnDestroy {

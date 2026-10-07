@@ -11,6 +11,7 @@ import {
   OnInit,
   Optional,
   Self,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -65,6 +66,7 @@ export class NggvRadioControlRegistry {
     templateUrl: './radio.component.html',
     styleUrls: ['./radio.component.scss'],
     providers: [NggvRadioControlRegistry],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvRadioComponent

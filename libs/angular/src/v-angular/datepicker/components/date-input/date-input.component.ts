@@ -15,6 +15,7 @@ import {
   Optional,
   Self,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import {
@@ -48,6 +49,7 @@ import type { CalendarType } from '../../datepicker.models'
   selector: 'nggv-dateinput,nggv-input[type=date]',
   templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DateInputComponent

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 
 import { SortableListGroup, SortableListItem } from '@sebgroup/green-angular'
 
 @Component({
     templateUrl: './sortable-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SortableListComponent {

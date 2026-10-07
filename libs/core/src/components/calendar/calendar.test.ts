@@ -1,6 +1,6 @@
-import { userEvent } from '@vitest/browser/context'
 import { addDays, addMonths, subMonths } from 'date-fns'
 import { describe, expect, it } from 'vitest'
+import { userEvent } from 'vitest/browser'
 
 import { htmlTemplateTagFactory } from '@sebgroup/green-core/scoping'
 import {

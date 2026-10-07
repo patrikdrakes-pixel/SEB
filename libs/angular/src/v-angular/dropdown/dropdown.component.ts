@@ -16,6 +16,7 @@ import {
   Self,
   SimpleChanges,
   TemplateRef,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -38,6 +39,7 @@ import {
     selector: 'nggv-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvDropdownComponent<

@@ -1,5 +1,5 @@
-import { userEvent } from '@vitest/browser/context'
 import { afterEach, describe, expect, it, vi } from 'vitest'
+import { userEvent } from 'vitest/browser'
 
 import type { GdsDropdown } from '@sebgroup/green-core/components/dropdown'
 

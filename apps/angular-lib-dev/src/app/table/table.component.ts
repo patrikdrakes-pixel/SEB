@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
 
 import { TableHeaderListItem, TableRow } from '@sebgroup/green-angular'
 
@@ -35,6 +35,7 @@ const tableData: TableRow[] = [
 
 @Component({
   templateUrl: './table.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TableComponent {

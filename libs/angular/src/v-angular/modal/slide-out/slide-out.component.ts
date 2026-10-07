@@ -16,6 +16,7 @@ import {
   Output,
   Renderer2,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 import { DialogButtons } from '../modal.types'
@@ -61,6 +62,7 @@ import { DialogButtons } from '../modal.types'
             ]),
         ]),
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvSlideOutComponent implements OnInit {

@@ -11,6 +11,7 @@ import {
   Output,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 export interface SortableListItem {
@@ -31,6 +32,7 @@ export interface SortableListGroup {
     selector: 'ngg-sortable-list',
     templateUrl: './sortable-list.component.html',
     styleUrls: ['./sortable-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggSortableListComponent {

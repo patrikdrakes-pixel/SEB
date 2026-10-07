@@ -13,6 +13,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { Subscription } from 'rxjs'
 
@@ -25,6 +26,7 @@ import type { CalendarType } from '../../datepicker.models'
     selector: 'nggv-datepicker',
     templateUrl: './datepicker.component.html',
     styleUrls: ['./datepicker.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DatepickerComponent implements OnInit, OnChanges, OnDestroy {

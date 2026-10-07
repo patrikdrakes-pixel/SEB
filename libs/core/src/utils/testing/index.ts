@@ -1,5 +1,5 @@
 import { html, render, TemplateResult } from 'lit'
-import { page, userEvent } from '@vitest/browser/context'
+import { page, userEvent } from 'vitest/browser'
 
 // Re-export html from lit for tests
 export { html }

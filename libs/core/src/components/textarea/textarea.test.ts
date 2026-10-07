@@ -1,5 +1,5 @@
-import { userEvent } from '@vitest/browser/context'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { userEvent } from 'vitest/browser'
 
 import type { GdsTextarea } from '@sebgroup/green-core/components/textarea/index.js'
 

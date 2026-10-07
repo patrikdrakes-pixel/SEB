@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core'
 
 import { AlertType } from './alert.models'
 
@@ -6,6 +6,7 @@ import { AlertType } from './alert.models'
     selector: 'nggv-alert',
     templateUrl: './alert.component.html',
     styleUrls: ['./alert.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AlertComponent {

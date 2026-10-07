@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, Directive } from '@angular/core'
+import { Component, Directive, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import {
   FormControl,
@@ -23,6 +23,7 @@ import { NggvDropdownComponent } from './dropdown.component'
     template: '',
     // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
     inputs: ['state', 'scrollOffset', 'options', 'expanded', 'optionContentTpl'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class DropdownListStubComponent {}

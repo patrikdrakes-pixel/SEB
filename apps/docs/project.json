@@ -9,6 +9,7 @@
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
+      "dependsOn": ["core:build", "react:generate-core-wrappers"],
       "options": {
         "outputPath": "dist/apps/docs",
         "staticExport": true,
@@ -25,12 +26,12 @@
           "outputPath": "apps/docs"
         },
         "production": {}
-      },
-      "dependsOn": ["core:build", "react:generate-core-wrappers"]
+      }
     },
     "serve": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
+      "dependsOn": ["core:build", "react:generate-core-wrappers"],
       "options": {
         "buildTarget": "docs:build",
         "dev": true,
@@ -51,8 +52,7 @@
           "buildTarget": "docs:build:production",
           "dev": false
         }
-      },
-      "dependsOn": ["core:build", "react:generate-core-wrappers"]
+      }
     },
     "export": {
       "executor": "@nx/next:export",

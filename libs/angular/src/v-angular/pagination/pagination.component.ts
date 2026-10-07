@@ -5,6 +5,7 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 import '@sebgroup/green-core/components/icon/icons/chevron-left.js'
@@ -16,6 +17,7 @@ import '@sebgroup/green-core/components/icon/icons/arrow-left.js'
     selector: 'nggv-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PaginationComponent implements OnChanges {

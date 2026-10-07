@@ -216,6 +216,7 @@ export class NggModalComponent implements OnDestroy, OnInit {
       <i></i>
     </button>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggModalHeaderComponent {
@@ -233,6 +234,7 @@ export class NggModalHeaderComponent {
     selector: '[ngg-modal-body]',
     styleUrls: ['./modal.component.scss'],
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggModalBodyComponent {}
@@ -259,6 +261,7 @@ export class NggModalBodyComponent {}
       {{ confirmLabel }}
     </button>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggModalFooterComponent {

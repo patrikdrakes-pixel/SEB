@@ -7,12 +7,12 @@
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": ["rollup"],
       "options": {
         "command": "echo 'building Extract'",
         "outputPath": "dist/libs/extract",
         "project": "libs/extract/package.json"
-      },
-      "dependsOn": ["rollup"]
+      }
     },
     "rollup": {
       "executor": "@nx/rollup:rollup",

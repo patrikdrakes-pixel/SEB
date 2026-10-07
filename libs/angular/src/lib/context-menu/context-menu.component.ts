@@ -7,6 +7,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 import { DropdownOption } from '@sebgroup/green-angular/src/lib/dropdown'
@@ -30,6 +31,7 @@ interface MenuItems extends DropdownOption {
     templateUrl: './context-menu.component.html',
     styleUrls: ['context-menu.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggContextMenuComponent {

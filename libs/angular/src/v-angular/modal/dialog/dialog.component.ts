@@ -14,6 +14,7 @@ import {
   Output,
   Renderer2,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 import { DialogButtons } from '../modal.types'
@@ -28,6 +29,7 @@ export interface DialogEvent<T = any> {
     templateUrl: './dialog.component.html',
     styleUrls: ['./dialog.component.scss'],
     exportAs: 'dialog',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvDialogComponent implements OnInit, OnDestroy {

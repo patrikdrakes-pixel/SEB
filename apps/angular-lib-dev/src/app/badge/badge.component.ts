@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 
 import { BadgeType } from '@sebgroup/extract'
 
 @Component({
     selector: 'green-badge',
     templateUrl: './badge.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BadgeComponent implements OnInit {

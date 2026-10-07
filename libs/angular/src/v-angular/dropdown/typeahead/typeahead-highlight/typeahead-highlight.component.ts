@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
     selector: 'nggv-typeahead-highlight',
     templateUrl: './typeahead-highlight.component.html',
     styleUrls: ['./typeahead-highlight.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvTypeaheadHighlightComponent implements OnChanges {

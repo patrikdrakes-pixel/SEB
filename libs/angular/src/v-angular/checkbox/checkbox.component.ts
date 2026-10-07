@@ -10,6 +10,7 @@ import {
   Optional,
   Output,
   Self,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -24,6 +25,7 @@ import { NggvBaseControlValueAccessorComponent } from '@sebgroup/green-angular/s
     selector: 'nggv-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvCheckboxComponent extends NggvBaseControlValueAccessorComponent {

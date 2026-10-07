@@ -5,6 +5,7 @@ import {
   Input,
   OnDestroy,
   QueryList,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { Observable, Subscription } from 'rxjs'
 
@@ -18,6 +19,7 @@ import { NggAccordionListItemComponent } from './accordion-list-item.component'
 @Component({
     selector: 'ngg-accordion',
     templateUrl: './accordion.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggAccordionComponent implements AfterContentChecked, OnDestroy {

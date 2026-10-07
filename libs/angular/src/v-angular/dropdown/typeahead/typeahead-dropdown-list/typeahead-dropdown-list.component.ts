@@ -8,6 +8,7 @@ import {
   Optional,
   Renderer2,
   SkipSelf,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
 import { fromEvent, Subject, takeUntil } from 'rxjs'
@@ -24,6 +25,7 @@ import { NggvDropdownListComponent } from '../../dropdown-list/dropdown-list.com
         '../typeahead-dropdown-list/typeahead-dropdown-list.component.scss',
         '../../dropdown-list/dropdown-list.component.scss',
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvTypeaheadDropdownListComponent

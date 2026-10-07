@@ -16,6 +16,7 @@ import {
   Self,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import {
   AbstractControl,
@@ -32,6 +33,7 @@ import { takeUntil } from 'rxjs/operators'
 @Injectable() // Workaround for Compodoc https://github.com/compodoc/compodoc/issues/984
 @Component({
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 }) // Required with Angular ivy compiler
 // eslint-disable-next-line @angular-eslint/directive-class-suffix

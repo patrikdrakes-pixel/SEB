@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
     selector: 'ngg-in-page-wizard-step-card',
     templateUrl: './in-page-wizard-step-card.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggInPageWizardStepCardComponent {

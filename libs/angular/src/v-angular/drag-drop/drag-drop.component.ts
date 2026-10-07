@@ -10,6 +10,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { timer } from 'rxjs'
 import { filter, retryWhen, switchMap, take, tap } from 'rxjs/operators'
@@ -45,6 +46,7 @@ export type DragDropState = 'normal' | 'over' | 'uploading' | 'done'
     selector: 'nggv-drag-drop',
     templateUrl: './drag-drop.component.html',
     styleUrls: ['./drag-drop.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvDragDropComponent implements OnInit, OnDestroy {

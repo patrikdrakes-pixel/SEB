@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser'
 
 import { TableHeaderListValueType } from './cell-table.types'
@@ -30,6 +30,7 @@ import { TableHeaderListValueType } from './cell-table.types'
       <span *ngSwitchDefault>–</span>
     </ng-container>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CellTableItemComponent {

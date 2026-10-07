@@ -1,7 +1,7 @@
 import './input-mask.globals'
 
 import { CommonModule } from '@angular/common'
-import { Component, importProvidersFrom } from '@angular/core'
+import { Component, importProvidersFrom, ChangeDetectionStrategy } from '@angular/core'
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -128,6 +128,7 @@ interface WithExtras {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class NggvInputMaskStoryComponent {

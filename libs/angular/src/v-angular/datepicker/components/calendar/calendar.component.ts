@@ -9,6 +9,7 @@ import {
   QueryList,
   SimpleChanges,
   ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core'
 
 import {
@@ -24,6 +25,7 @@ import type { CalendarType, DisableDateConfig } from '../../datepicker.models'
     selector: 'nggv-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CalendarComponent implements OnChanges {

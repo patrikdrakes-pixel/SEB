@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms'
 import { Subscription } from 'rxjs'
@@ -25,6 +26,7 @@ import '@sebgroup/green-core/components/icon/icons/chevron-right.js'
     selector: 'nggv-calendar-control',
     templateUrl: './calendar-control.component.html',
     styleUrls: ['./calendar-control.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CalendarControlComponent implements OnInit, OnChanges, OnDestroy {

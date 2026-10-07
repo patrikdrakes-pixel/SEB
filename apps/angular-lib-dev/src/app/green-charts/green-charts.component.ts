@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 
 import { ChartSettings } from '@sebgroup/green-charts'
 
@@ -10,6 +10,7 @@ import { ChartSettings } from '@sebgroup/green-charts'
     <div class="card d-block mt-5">
       <ngg-chart [settings]="hideAxis"></ngg-chart>
     </div>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GreenChartsComponent {

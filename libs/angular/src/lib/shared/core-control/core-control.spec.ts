@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, ChangeDetectionStrategy } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import {
   FormControl,
@@ -34,6 +34,7 @@ import { NggCoreFormsModule } from './core-control.module'
       ></gds-input>
     </form>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestComponent {

@@ -8,10 +8,10 @@
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": ["rollup", "generate-core-wrappers"],
       "options": {
         "command": "npx copyfiles -f libs/react/package.json dist/libs/react"
-      },
-      "dependsOn": ["rollup", "generate-core-wrappers"]
+      }
     },
     "rollup": {
       "executor": "@nx/rollup:rollup",
@@ -52,6 +52,13 @@
     },
     "storybook": {
       "executor": "@nx/storybook:storybook",
+      "dependsOn": [
+        {
+          "target": "build",
+          "dependencies": true
+        },
+        "tokens:build"
+      ],
       "options": {
         "port": 4401,
         "configDir": "libs/react/.storybook"
@@ -60,18 +67,18 @@
         "ci": {
           "quiet": true
         }
-      },
+      }
+    },
+    "build-nx-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputDir}"],
       "dependsOn": [
         {
           "target": "build",
           "dependencies": true
         },
         "tokens:build"
-      ]
-    },
-    "build-nx-storybook": {
-      "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      ],
       "options": {
         "uiFramework": "@storybook/react",
         "configDir": "libs/react/.storybook",
@@ -81,18 +88,18 @@
         "ci": {
           "quiet": true
         }
-      },
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
       "dependsOn": [
         {
           "target": "build",
           "dependencies": true
         },
         "tokens:build"
-      ]
-    },
-    "build-storybook": {
-      "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      ],
       "options": {
         "outputDir": "dist/storybook/react",
         "configDir": "libs/react/.storybook"
@@ -101,14 +108,7 @@
         "ci": {
           "quiet": true
         }
-      },
-      "dependsOn": [
-        {
-          "target": "build",
-          "dependencies": true
-        },
-        "tokens:build"
-      ]
+      }
     },
     "copy-designlibrary-json": {
       "executor": "nx:run-commands",

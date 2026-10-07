@@ -8,6 +8,7 @@
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/angular-lib-dev",
         "index": "apps/angular-lib-dev/src/index.html",
@@ -52,11 +53,17 @@
           "sourceMap": true,
           "namedChunks": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "defaultConfiguration": "development",
+      "dependsOn": ["core:build"],
+      "continuous": true,
+      "options": {
+        "host": "0.0.0.0",
+        "buildTarget": "angular-lib-dev:build:development"
+      },
       "configurations": {
         "production": {
           "buildTarget": "angular-lib-dev:build:production"
@@ -64,14 +71,7 @@
         "development": {
           "buildTarget": "angular-lib-dev:build:development"
         }
-      },
-      "defaultConfiguration": "development",
-      "options": {
-        "host": "0.0.0.0",
-        "buildTarget": "angular-lib-dev:build:development"
-      },
-      "dependsOn": ["core:build"],
-      "continuous": true
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

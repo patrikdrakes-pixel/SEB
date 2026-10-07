@@ -9,6 +9,7 @@ import {
   OnInit,
   Optional,
   Self,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { NgControl } from '@angular/forms'
 import { TRANSLOCO_SCOPE, TranslocoScope } from '@jsverse/transloco'
@@ -23,6 +24,7 @@ import { NggvBaseControlValueAccessorComponent } from '@sebgroup/green-angular/s
     selector: 'nggv-radio-group',
     templateUrl: './radio-group.component.html',
     styleUrls: ['./radio-group.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvRadioGroupComponent

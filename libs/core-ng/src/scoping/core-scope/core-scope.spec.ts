@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
 import { SCOPE_RESOLVER } from '../scope-resolver'
@@ -6,6 +6,7 @@ import { GdsCoreScopeDirective } from './core-scope.directive'
 
 @Component({
     template: '<div *gdsCoreScope><p></p></div>',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestComponent {}

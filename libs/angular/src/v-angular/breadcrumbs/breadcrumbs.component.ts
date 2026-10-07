@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core'
+import { Component, HostBinding, Input, ChangeDetectionStrategy } from '@angular/core'
 
 type Breadcrumb = {
   /** Title shown for the breadcrumb link. */
@@ -13,6 +13,7 @@ type Breadcrumb = {
     selector: 'nggv-breadcrumbs',
     templateUrl: './breadcrumbs.component.html',
     styleUrls: ['./breadcrumbs.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NggvBreadcrumbsComponent {

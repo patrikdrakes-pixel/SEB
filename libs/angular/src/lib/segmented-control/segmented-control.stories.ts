@@ -1,7 +1,7 @@
 // Segmented-controls.stories.ts
 
 import { APP_BASE_HREF, CommonModule } from '@angular/common'
-import { Component, importProvidersFrom } from '@angular/core'
+import { Component, importProvidersFrom, ChangeDetectionStrategy } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import {
   applicationConfig,
@@ -16,12 +16,14 @@ import { NggSegmentedControlComponent } from './segmented-control.component'
 
 @Component({
   template: ` <p class="mt-4">Option A</p> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class OptionAComponent {}
 
 @Component({
   template: ` <p class="mt-4">Option B</p> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class OptionBComponent {}

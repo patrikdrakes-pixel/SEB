@@ -12,6 +12,7 @@ import {
   QueryList,
   SimpleChanges,
   TemplateRef,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms'
 import { Subscription } from 'rxjs'
@@ -120,6 +121,7 @@ function objectFromEntries(entryMap: Map<any, any>): { [key: string]: any } {
     selector: 'nggv-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TableComponent<T extends TableRow>

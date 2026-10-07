@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { render, RenderResult, waitFor } from '@testing-library/angular'
 import { Subject } from 'rxjs'
@@ -168,6 +168,7 @@ describe(NggAccordionComponent.name, () => {
       <div ngg-accordion-list-item listItemHeader="2"></div>
     </ngg-accordion>
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class NggFakeAccordionComponent {}

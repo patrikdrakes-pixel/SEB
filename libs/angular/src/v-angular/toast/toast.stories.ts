@@ -4,6 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   importProvidersFrom,
   TemplateRef,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import {
   BrowserAnimationsModule,
@@ -43,6 +44,7 @@ import { MessageType } from './toast.models'
       Custom content with <a href="#">Link!</a>
     </ng-template>
     <button (click)="addCustomMessage(customToast)">Custom content</button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class NggvToastStoryComponent {

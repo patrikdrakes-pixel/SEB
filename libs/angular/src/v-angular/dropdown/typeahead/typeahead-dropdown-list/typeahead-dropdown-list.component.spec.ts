@@ -5,6 +5,7 @@ import {
   EventEmitter,
   Output,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { TranslocoModule } from '@jsverse/transloco'
@@ -20,6 +21,7 @@ import { NggvTypeaheadDropdownListComponent } from './typeahead-dropdown-list.co
     selector: 'nggv-input',
     // eslint-disable-next-line @angular-eslint/no-outputs-metadata-property
     outputs: ['nggvFocus'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class InputStubComponent {

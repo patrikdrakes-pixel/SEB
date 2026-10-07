@@ -1,5 +1,5 @@
-import { userEvent } from '@vitest/browser/context'
 import { describe, expect, it, vi } from 'vitest'
+import { userEvent } from 'vitest/browser'
 
 import type { GdsLink } from '@sebgroup/green-core/components/link'
 
